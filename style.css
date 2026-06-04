@@ -9,7 +9,6 @@ body {
   color: #07142f;
 }
 
-/* Main single-phone app layout */
 .app-phone {
   width: 390px;
   min-height: 820px;
@@ -23,7 +22,6 @@ body {
   overflow: hidden;
 }
 
-/* Each tab page */
 .tab-page {
   display: none;
   padding-bottom: 95px;
@@ -33,7 +31,6 @@ body {
   display: block;
 }
 
-/* Status bar */
 .status {
   font-weight: 700;
   font-size: 14px;
@@ -45,7 +42,6 @@ body {
   font-size: 12px;
 }
 
-/* Header */
 .topbar {
   display: flex;
   justify-content: space-between;
@@ -78,7 +74,6 @@ h1 span {
   font-weight: 700;
 }
 
-/* Cards */
 .connect-card,
 .list-card,
 .alert-card,
@@ -163,7 +158,6 @@ h1 span {
   padding: 3px 8px;
 }
 
-/* Time to move card */
 .move-card {
   border: 1px solid #e2e9f2;
   border-radius: 14px;
@@ -189,7 +183,6 @@ h1 span {
   cursor: pointer;
 }
 
-/* Titles */
 .title {
   font-size: 26px;
   margin: 8px 0 16px;
@@ -205,12 +198,11 @@ h1 span {
   font-style: normal;
 }
 
-/* Pressure map */
 .pressure-layout {
   display: flex;
-  gap: 20px;
+  gap: 18px;
   align-items: center;
-  margin-top: 30px;
+  margin-top: 25px;
 }
 
 .legend {
@@ -244,17 +236,35 @@ h1 span {
   background: #f10b0b;
 }
 
+/* Foot-shaped pressure map */
 .soles {
   display: flex;
-  gap: 28px;
+  gap: 20px;
 }
 
 .sole {
-  width: 70px;
+  width: 82px;
   height: 305px;
-  border: 2px solid #edf1f7;
-  border-radius: 50% 50% 42% 42%;
   position: relative;
+  background: #fff;
+  border: 2px solid #edf1f7;
+  border-radius: 48% 52% 42% 45%;
+  clip-path: polygon(
+    45% 0%,
+    62% 2%,
+    78% 12%,
+    86% 28%,
+    82% 48%,
+    72% 68%,
+    72% 88%,
+    60% 100%,
+    38% 100%,
+    26% 88%,
+    28% 68%,
+    20% 48%,
+    16% 28%,
+    22% 12%
+  );
 }
 
 .p {
@@ -262,23 +272,24 @@ h1 span {
   width: 15px;
   height: 15px;
   border-radius: 50%;
-  left: 27px;
+  z-index: 5;
 }
 
 .top {
-  top: 85px;
+  top: 90px;
+  left: 38px;
 }
 
 .mid {
-  top: 175px;
-  left: 18px;
+  top: 178px;
+  left: 25px;
 }
 
 .heel {
   bottom: 35px;
+  left: 34px;
 }
 
-/* Pressure scale */
 .scale,
 .arch-scale {
   height: 10px;
@@ -298,7 +309,6 @@ h1 span {
   margin-top: 28px;
 }
 
-/* Gait / Insights */
 .gait {
   display: flex;
   gap: 18px;
@@ -319,19 +329,50 @@ h1 span {
   color: #09a94f;
 }
 
+/* Gait analysis foot shape */
 .feet {
   display: flex;
-  gap: 20px;
+  justify-content: center;
   align-items: center;
+  margin-top: 12px;
 }
 
 .feet div {
-  width: 75px;
-  height: 260px;
-  border-radius: 55% 55% 45% 45%;
+  width: 105px;
+  height: 285px;
+  position: relative;
+  border: 2px solid #edf1f7;
+  border-radius: 48% 52% 42% 45%;
+  clip-path: polygon(
+    45% 0%,
+    62% 2%,
+    78% 12%,
+    86% 28%,
+    82% 48%,
+    72% 68%,
+    72% 88%,
+    60% 100%,
+    38% 100%,
+    26% 88%,
+    28% 68%,
+    20% 48%,
+    16% 28%,
+    22% 12%
+  );
   background:
-    radial-gradient(circle at 50% 25%, red 0 7%, orange 8% 15%, #0dbaff 16% 35%, #d9efff 36% 60%, transparent 61%),
-    radial-gradient(circle at 50% 78%, red 0 7%, orange 8% 15%, #0dbaff 16% 35%, #d9efff 36% 60%, transparent 61%);
+    radial-gradient(circle at 58% 25%,
+      red 0 9%,
+      orange 10% 22%,
+      #0dbaff 23% 45%,
+      #d9efff 46% 65%,
+      transparent 66%),
+    radial-gradient(circle at 50% 80%,
+      red 0 9%,
+      orange 10% 22%,
+      #0dbaff 23% 45%,
+      #d9efff 46% 65%,
+      transparent 66%),
+    #f8fcff;
 }
 
 .report {
@@ -341,7 +382,6 @@ h1 span {
   margin-top: 16px;
 }
 
-/* Arch section */
 .arch-drawing {
   height: 240px;
   margin: 10px 0;
@@ -370,7 +410,6 @@ h1 span {
   line-height: 1.8;
 }
 
-/* Settings */
 .setting input {
   float: right;
   accent-color: #075cff;
@@ -398,7 +437,6 @@ h1 span {
   margin-top: 14px;
 }
 
-/* Bottom navigation */
 .bottom-nav {
   position: absolute;
   bottom: 0;
@@ -427,13 +465,11 @@ h1 span {
   font-weight: 700;
 }
 
-/* Optional old classes hidden if still in HTML */
-.phone-strip,
-.phone {
-  all: unset;
+.small-title {
+  font-size: 22px;
+  margin-top: 24px;
 }
 
-/* Mobile view */
 @media (max-width: 500px) {
   .app-phone {
     width: 100%;
@@ -441,8 +477,4 @@ h1 span {
     margin: 0;
     border-radius: 0;
   }
-}
-.small-title {
-  font-size: 22px;
-  margin-top: 24px;
 }
