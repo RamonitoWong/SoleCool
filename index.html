@@ -1,8 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SoleCool App Interface</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
 <body>
   <main class="app-phone">
     <div class="status">9:41 <span>▮▮▮ Wi-Fi 🔋</span></div>
 
-    <!-- HOME TAB -->
     <section class="tab-page active" id="home">
       <header class="topbar">
         <div>
@@ -24,6 +32,24 @@
         <div class="bar"><i></i></div>
       </div>
 
+      <div class="list-card">
+        <b>👟 Steps</b>
+        <strong>7,842</strong>
+        <span>›</span>
+      </div>
+
+      <div class="list-card">
+        <b>📍 Distance</b>
+        <strong>5.6 km</strong>
+        <span>›</span>
+      </div>
+
+      <div class="list-card">
+        <b>🔥 Calories</b>
+        <strong>412 kcal</strong>
+        <span>›</span>
+      </div>
+
       <div class="move-card">
         <div class="move-icon">🏃</div>
         <b>Time to Move!</b>
@@ -33,34 +59,40 @@
       </div>
     </section>
 
-    <!-- HISTORY TAB -->
     <section class="tab-page" id="history">
       <h2 class="title">History</h2>
 
       <div class="list-card">
         <b>Today</b>
-        <strong>4h 32m standing</strong>
+        <strong>4h 32m</strong>
+        <small>Standing duration</small>
       </div>
 
       <div class="list-card">
         <b>Yesterday</b>
-        <strong>5h 10m standing</strong>
+        <strong>5h 10m</strong>
+        <small>Standing duration</small>
       </div>
 
       <div class="list-card">
         <b>This Week</b>
-        <strong>28h 45m total</strong>
+        <strong>28h 45m</strong>
+        <small>Total standing time</small>
       </div>
 
       <div class="alert-card">
-        <b>Warnings History</b>
-        <span>6 alerts this week</span>
+        <b>Warnings History <em>6</em></b>
+        <span>›</span>
+      </div>
+
+      <div class="tip">
+        💡 <b>Trend</b><br>
+        Your standing time increases near the end of the week. Consider more short posture changes during long shifts.
       </div>
     </section>
 
-    <!-- INSIGHTS TAB -->
     <section class="tab-page" id="insights">
-      <h2 class="title">Insights</h2>
+      <h2 class="title">Pressure Map ⓘ</h2>
 
       <div class="pressure-layout">
         <ul class="legend">
@@ -84,15 +116,40 @@
         </div>
       </div>
 
+      <div class="scale"></div>
+
+      <div class="scale-label">
+        <span>Low Pressure</span>
+        <span>High Pressure</span>
+      </div>
+
       <div class="tip">
         💡 <b>Tip</b><br>
         Aim for even pressure distribution across all zones.
       </div>
 
-      <button class="report">View Gait Analysis ›</button>
+      <h2 class="title small-title">Gait Analysis <em>Good</em></h2>
+
+      <div class="gait">
+        <div>
+          <p>Stride Length</p>
+          <h2>1.21 <small>m</small></h2>
+          <span>Good</span>
+
+          <p>Cadence</p>
+          <h2>112</h2>
+          <small>steps/min</small>
+          <span>Good</span>
+        </div>
+
+        <div class="feet">
+          <div></div>
+        </div>
+      </div>
+
+      <button class="report">View Full Gait Report ›</button>
     </section>
 
-    <!-- DEVICES TAB -->
     <section class="tab-page" id="devices">
       <h2 class="title">Devices</h2>
 
@@ -118,9 +175,10 @@
         <small>Intensity <span>Medium ›</span></small>
         <small>Timer <span>10 min session / 5 min rest ›</span></small>
       </div>
+
+      <button class="enable">Enable Therapy ☼</button>
     </section>
 
-    <!-- MORE TAB -->
     <section class="tab-page" id="more">
       <h2 class="title">More</h2>
 
@@ -145,7 +203,6 @@
       </div>
     </section>
 
-    <!-- BOTTOM NAV -->
     <nav class="bottom-nav">
       <button class="nav-btn active" onclick="openTab('home', this)">⌂<br>Home</button>
       <button class="nav-btn" onclick="openTab('history', this)">↺<br>History</button>
@@ -157,14 +214,17 @@
 
   <script>
     function openTab(tabId, button) {
-      const pages = document.querySelectorAll(".tab-page");
-      const buttons = document.querySelectorAll(".nav-btn");
+      document.querySelectorAll(".tab-page").forEach(page => {
+        page.classList.remove("active");
+      });
 
-      pages.forEach(page => page.classList.remove("active"));
-      buttons.forEach(btn => btn.classList.remove("active"));
+      document.querySelectorAll(".nav-btn").forEach(btn => {
+        btn.classList.remove("active");
+      });
 
       document.getElementById(tabId).classList.add("active");
       button.classList.add("active");
     }
   </script>
 </body>
+</html>
