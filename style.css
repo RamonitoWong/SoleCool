@@ -11,7 +11,7 @@ body {
 
 .app-phone {
   width: 390px;
-  min-height: 820px;
+  height: 820px;
   margin: 30px auto;
   background: #fff;
   border-radius: 32px;
@@ -24,11 +24,17 @@ body {
 
 .tab-page {
   display: none;
+  height: calc(820px - 115px);
+  overflow-y: auto;
   padding-bottom: 95px;
 }
 
 .tab-page.active {
   display: block;
+}
+
+.tab-page::-webkit-scrollbar {
+  display: none;
 }
 
 .status {
@@ -198,9 +204,10 @@ h1 span {
   font-style: normal;
 }
 
+/* Pressure Map */
 .pressure-layout {
   display: flex;
-  gap: 18px;
+  gap: 10px;
   align-items: center;
   margin-top: 25px;
 }
@@ -209,11 +216,13 @@ h1 span {
   list-style: none;
   padding: 0;
   margin: 0;
-  width: 92px;
+  width: 85px;
+  flex-shrink: 0;
 }
 
 .legend li {
   margin: 30px 0;
+  font-size: 14px;
 }
 
 .legend i {
@@ -236,10 +245,11 @@ h1 span {
   background: #f10b0b;
 }
 
-/* SVG foot pressure map */
+/* SVG Pressure Feet */
 .soles {
   display: flex;
-  gap: 18px;
+  gap: 8px;
+  flex-shrink: 0;
 }
 
 .foot-svg {
@@ -252,7 +262,12 @@ h1 span {
   height: 100%;
 }
 
-.foot-svg path,
+.foot-svg path {
+  fill: #fff;
+  stroke: #edf1f7;
+  stroke-width: 3;
+}
+
 .foot-svg svg circle:not(.yellow-dot):not(.orange-dot):not(.red-dot) {
   fill: #fff;
   stroke: #edf1f7;
@@ -271,7 +286,50 @@ h1 span {
   fill: #f10b0b;
 }
 
-.feets,
+/* Pressure scale */
+.scale,
+.arch-scale {
+  height: 10px;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #14af45, #ffd400, #ff1b00);
+  margin-top: 25px;
+  width: 100%;
+}
+
+.scale-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.tip {
+  margin-top: 28px;
+}
+
+/* Gait Analysis */
+.gait {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+}
+
+.gait p {
+  margin: 22px 0 4px;
+  color: #1f3f73;
+}
+
+.gait h2 {
+  font-size: 32px;
+  margin: 0;
+}
+
+.gait span,
+.green-text {
+  color: #09a94f;
+}
+
 .feet {
   display: flex;
   justify-content: center;
@@ -283,7 +341,12 @@ h1 span {
   height: 290px;
 }
 
-.feet path,
+.feet path {
+  fill: #f8fcff;
+  stroke: #dce5f2;
+  stroke-width: 3;
+}
+
 .feet svg circle:not(.heat-blue):not(.heat-orange):not(.heat-red) {
   fill: #f8fcff;
   stroke: #dce5f2;
@@ -305,39 +368,6 @@ h1 span {
   opacity: 0.95;
 }
 
-/* SVG gait foot */
-.feet {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.feet svg {
-  width: 115px;
-  height: 290px;
-}
-
-.feet path {
-  fill: #f8fcff;
-  stroke: #dce5f2;
-  stroke-width: 4;
-}
-
-.heat-blue {
-  fill: #0dbaff;
-  opacity: 0.75;
-}
-
-.heat-orange {
-  fill: orange;
-  opacity: 0.85;
-}
-
-.heat-red {
-  fill: red;
-  opacity: 0.9;
-}
-
 .report {
   background: #fff;
   color: #075cff;
@@ -345,6 +375,7 @@ h1 span {
   margin-top: 16px;
 }
 
+/* Arch section */
 .arch-drawing {
   height: 240px;
   margin: 10px 0;
@@ -373,6 +404,7 @@ h1 span {
   line-height: 1.8;
 }
 
+/* Settings */
 .setting input {
   float: right;
   accent-color: #075cff;
@@ -400,6 +432,7 @@ h1 span {
   margin-top: 14px;
 }
 
+/* Bottom navigation */
 .bottom-nav {
   position: absolute;
   bottom: 0;
@@ -436,8 +469,13 @@ h1 span {
 @media (max-width: 500px) {
   .app-phone {
     width: 100%;
+    height: 100vh;
     min-height: 100vh;
     margin: 0;
     border-radius: 0;
+  }
+
+  .tab-page {
+    height: calc(100vh - 115px);
   }
 }
