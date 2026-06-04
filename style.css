@@ -239,11 +239,11 @@ h1 span {
 /* SVG foot pressure map */
 .soles {
   display: flex;
-  gap: 22px;
+  gap: 18px;
 }
 
 .foot-svg {
-  width: 82px;
+  width: 88px;
   height: 305px;
 }
 
@@ -252,10 +252,11 @@ h1 span {
   height: 100%;
 }
 
-.foot-svg path {
+.foot-svg path,
+.foot-svg svg circle:not(.yellow-dot):not(.orange-dot):not(.red-dot) {
   fill: #fff;
   stroke: #edf1f7;
-  stroke-width: 4;
+  stroke-width: 3;
 }
 
 .yellow-dot {
@@ -270,43 +271,38 @@ h1 span {
   fill: #f10b0b;
 }
 
-.scale,
-.arch-scale {
-  height: 10px;
-  border-radius: 10px;
-  background: linear-gradient(90deg, #14af45, #ffd400, #ff1b00);
-  margin-top: 25px;
-}
-
-.scale-label {
+.feets,
+.feet {
   display: flex;
-  justify-content: space-between;
-  font-size: 13px;
-  margin-top: 10px;
+  justify-content: center;
+  align-items: center;
 }
 
-.tip {
-  margin-top: 28px;
+.feet svg {
+  width: 120px;
+  height: 290px;
 }
 
-.gait {
-  display: flex;
-  gap: 18px;
+.feet path,
+.feet svg circle:not(.heat-blue):not(.heat-orange):not(.heat-red) {
+  fill: #f8fcff;
+  stroke: #dce5f2;
+  stroke-width: 3;
 }
 
-.gait p {
-  margin: 22px 0 4px;
-  color: #1f3f73;
+.heat-blue {
+  fill: #0dbaff;
+  opacity: 0.7;
 }
 
-.gait h2 {
-  font-size: 32px;
-  margin: 0;
+.heat-orange {
+  fill: orange;
+  opacity: 0.85;
 }
 
-.gait span,
-.green-text {
-  color: #09a94f;
+.heat-red {
+  fill: red;
+  opacity: 0.95;
 }
 
 /* SVG gait foot */
