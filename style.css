@@ -442,3 +442,7 @@ h1 span {
     border-radius: 0;
   }
 }
+.small-title {
+  font-size: 22px;
+  margin-top: 24px;
+}
