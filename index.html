@@ -62,31 +62,32 @@
         <h2 id="stretchTimer">03:00</h2>
       
         <button onclick="startStretchTimer()">Start 3-Min Stretch</button>
-        <button class="stop-btn" onclick="stopStretchTimer()">Stop</button>
+      
         <button id="stopStretchBtn" class="stop-btn inactive-stop" onclick="stopStretchTimer()" disabled>
           Stop
         </button>
-
-  <div class="snooze-row">
-    <label>Snooze:</label>
-    <select id="snoozeTime">
-      <option value="1">1 min demo</option>
-      <option value="5">5 min</option>
-      <option value="10">10 min</option>
-      <option value="15" selected>15 min</option>
-      <option value="30">30 min</option>
-    </select>
-  </div>
-
-  <small onclick="snoozeReminder()">Snooze Reminder</small>
-
-  <div class="idle-row">
-    <label>
-      <input type="checkbox" id="idleMode" onchange="toggleIdleMode()">
-      Idle Mode
-    </label>
-  </div>
-</div>
+      
+        <div class="snooze-row">
+          <label>Snooze:</label>
+          <select id="snoozeTime">
+            <option value="1">1 min demo</option>
+            <option value="5">5 min</option>
+            <option value="10">10 min</option>
+            <option value="15" selected>15 min</option>
+            <option value="30">30 min</option>
+          </select>
+        </div>
+      
+        <small onclick="snoozeReminder()">Snooze Reminder</small>
+      
+        <div class="idle-row">
+          <label>
+            <input type="checkbox" id="idleMode" onchange="toggleIdleMode()">
+            Idle Mode
+          </label>
+        </div>
+      </div>
+      </section>
 
     <section class="tab-page" id="history">
       <h2 class="title">History</h2>
@@ -315,6 +316,7 @@
       document.getElementById(tabId).classList.add("active");
       button.classList.add("active");
     }
+<script src="script.js">
   </script>
 </body>
 </html>
