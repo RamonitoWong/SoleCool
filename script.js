@@ -105,6 +105,11 @@ function startStretchTimer() {
   clearInterval(stretchInterval);
   stretchSeconds = 180;
 
+  const stopBtn = document.getElementById("stopStretchBtn");
+  stopBtn.disabled = false;
+  stopBtn.classList.remove("inactive-stop");
+  stopBtn.classList.add("active-stop");
+
   document.getElementById("stretchTimer").innerText = formatTime(stretchSeconds);
   document.getElementById("stretchMessage").innerHTML = "Stretch session started.<br>Keep going!";
 
@@ -115,6 +120,11 @@ function startStretchTimer() {
     if (stretchSeconds <= 0) {
       clearInterval(stretchInterval);
       document.getElementById("stretchMessage").innerHTML = "Stretch complete!<br>Good job.";
+
+      stopBtn.disabled = true;
+      stopBtn.classList.remove("active-stop");
+      stopBtn.classList.add("inactive-stop");
+
       alert("Stretch completed!");
     }
   }, 1000);
@@ -123,6 +133,11 @@ function startStretchTimer() {
 function stopStretchTimer() {
   clearInterval(stretchInterval);
   stretchSeconds = 180;
+
+  const stopBtn = document.getElementById("stopStretchBtn");
+  stopBtn.disabled = true;
+  stopBtn.classList.remove("active-stop");
+  stopBtn.classList.add("inactive-stop");
 
   document.getElementById("stretchTimer").innerText = "03:00";
   document.getElementById("stretchMessage").innerHTML =
