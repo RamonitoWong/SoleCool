@@ -259,86 +259,39 @@ function getHours(timeString) {
   return hours + mins / 60;
 }
 
-  function showHistory(type, button) {
-    const chart = document.getElementById("historyChart");
-  
-    if (!chart) return;
-  
-    document.querySelectorAll(".history-btn").forEach(btn => {
-      btn.classList.remove("active-history");
-    });
-  
-    button.classList.add("active-history");
-  
-    chart.innerHTML = "";
-  
-    historyData[type].forEach(item => {
-      const hours = getHours(item.time);
-      const height = Math.min(hours * 12, 100);
-  
-      const bar = document.createElement("div");
-      bar.className = "vertical-bar-item";
-  
-      bar.innerHTML = `
-        <div class="bar-value">${item.time}</div>
-        <div class="vertical-bar-bg">
-          <div 
-            class="vertical-bar-fill ${item.warning ? "warning-bar" : "normal-bar"}"
-            style="height: ${height}%">
-          </div>
-        </div>
-        <small>${item.label.slice(0, 3)}</small>
-      `;
-  
-      if (item.warning) {
-        bar.onclick = () => {
-          alert(
-            `${item.label} Warning\n\n` +
-            `Standing time: ${item.time}\n` +
-            "You may need more posture changes or stretch breaks."
-          );
-        };
-      }
-  
-      chart.appendChild(bar);
-    });
-  }
+function showHistory(type, button) {
+  const chart = document.getElementById("historyChart");
+
+  if (!chart) return;
+
+  document.querySelectorAll(".history-btn").forEach(btn => {
+    btn.classList.remove("active-history");
+  });
 
   button.classList.add("active-history");
 
-  list.innerHTML = "";
   chart.innerHTML = "";
 
   historyData[type].forEach(item => {
     const hours = getHours(item.time);
+    const height = Math.min(hours * 12, 100);
 
     const bar = document.createElement("div");
-    bar.className = "history-bar-row";
+    bar.className = "vertical-bar-item";
 
     bar.innerHTML = `
-      <span>${item.label}</span>
-      <div class="history-bar-bg">
+      <div class="bar-value">${item.time}</div>
+      <div class="vertical-bar-bg">
         <div
-          class="history-bar-fill ${item.warning ? "warning-bar" : "normal-bar"}"
-          style="width: ${Math.min(hours * 13, 100)}%">
+          class="vertical-bar-fill ${item.warning ? "warning-bar" : "normal-bar"}"
+          style="height: ${height}%">
         </div>
       </div>
-      <small>${item.time}</small>
-    `;
-
-    chart.appendChild(bar);
-
-    const row = document.createElement("div");
-    row.className = "list-card history-item";
-
-    row.innerHTML = `
-      <b>${item.label} ${item.warning ? "⚠️" : ""}</b>
-      <strong>${item.time}</strong>
-      <small>${item.warning ? "High standing duration detected" : "Normal standing pattern"}</small>
+      <small>${item.label.slice(0, 3)}</small>
     `;
 
     if (item.warning) {
-      row.onclick = () => {
+      bar.onclick = () => {
         alert(
           `${item.label} Warning\n\n` +
           `Standing time: ${item.time}\n` +
@@ -347,12 +300,13 @@ function getHours(timeString) {
       };
     }
 
-    list.appendChild(row);
+    chart.appendChild(bar);
   });
 }
 
 document.addEventListener("DOMContentLoaded", () => {
   const dailyButton = document.querySelector(".history-btn");
+
   if (dailyButton) {
     showHistory("daily", dailyButton);
   }
