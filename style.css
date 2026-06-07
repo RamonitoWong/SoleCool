@@ -563,3 +563,33 @@ h1 span {
   opacity: 1;
   pointer-events: auto;
 }
+
+.history-toggle {
+  display: flex;
+  gap: 8px;
+  margin: 14px 0;
+}
+
+.history-btn {
+  flex: 1;
+  border: 1px solid #dce5f2;
+  background: #fff;
+  color: #075cff;
+  padding: 9px;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.active-history {
+  background: #075cff;
+  color: white;
+}
+
+.history-item {
+  cursor: pointer;
+}
+
+.history-item:hover {
+  transform: scale(1.01);
+}
