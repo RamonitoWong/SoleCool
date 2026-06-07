@@ -45,15 +45,40 @@ function startStretchTimer() {
 
     if (stretchSeconds <= 0) {
       clearInterval(stretchInterval);
-      message.innerHTML = "Stretch complete!<br>Good job.";
-
+    
+      message.innerHTML =
+        "✅ Stretching Complete!<br>Great job taking a break.";
+    
+      timer.innerText = "DONE";
+    
       stopBtn.disabled = true;
       stopBtn.classList.remove("active-stop");
       stopBtn.classList.add("inactive-stop");
-
-      alert("Stretch completed!");
+    
+      const startBtn = document.getElementById("startStretchBtn");
+    
+      if (startBtn) {
+        startBtn.innerText = "Reset Timer";
+        startBtn.onclick = resetStretchTimer;
+      }
     }
   }, 1000);
+}
+
+function resetStretchTimer() {
+  stretchSeconds = 180;
+
+  document.getElementById("stretchTimer").innerText = "03:00";
+
+  document.getElementById("stretchMessage").innerHTML =
+    "You've been standing for 2h 15m.<br>Let's stretch those legs!";
+
+  const startBtn = document.getElementById("startStretchBtn");
+
+  if (startBtn) {
+    startBtn.innerText = "Start 3-Min Stretch";
+    startBtn.onclick = startStretchTimer;
+  }
 }
 
 function stopStretchTimer() {
