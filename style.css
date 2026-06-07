@@ -636,3 +636,56 @@ h1 span {
   text-align: right;
   color: #1f3f73;
 }
+
+.vertical-chart {
+  height: 250px;
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  padding: 16px 10px;
+  overflow-x: auto;
+}
+
+.vertical-bar-item {
+  min-width: 45px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  cursor: pointer;
+}
+
+.vertical-bar-bg {
+  width: 22px;
+  height: 140px;
+  background: #edf1f7;
+  border-radius: 8px;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+.vertical-bar-fill {
+  width: 100%;
+  border-radius: 8px 8px 0 0;
+}
+
+.bar-value {
+  font-size: 10px;
+  margin-bottom: 6px;
+  color: #1f3f73;
+}
+
+.vertical-bar-item small {
+  font-size: 11px;
+  margin-top: 6px;
+}
+
+.normal-bar {
+  background: #075cff;
+}
+
+.warning-bar {
+  background: #ff3b30;
+}
