@@ -6,8 +6,13 @@ let snoozeTimeout = null;
 let idleMode = false;
 
 function openTab(tabId, button) {
-  document.querySelectorAll(".tab-page").forEach(page => page.classList.remove("active"));
-  document.querySelectorAll(".nav-btn").forEach(btn => btn.classList.remove("active"));
+  document.querySelectorAll(".tab-page").forEach(page => {
+    page.classList.remove("active");
+  });
+
+  document.querySelectorAll(".nav-btn").forEach(btn => {
+    btn.classList.remove("active");
+  });
 
   document.getElementById(tabId).classList.add("active");
   button.classList.add("active");
@@ -16,6 +21,7 @@ function openTab(tabId, button) {
 function formatTime(seconds) {
   const mins = Math.floor(seconds / 60);
   const secs = seconds % 60;
+
   return `${String(mins).padStart(2, "0")}:${String(secs).padStart(2, "0")}`;
 }
 
@@ -31,9 +37,15 @@ function startStretchTimer() {
   const timer = document.getElementById("stretchTimer");
   const message = document.getElementById("stretchMessage");
   const stopBtn = document.getElementById("stopStretchBtn");
+  const startBtn = document.getElementById("startStretchBtn");
 
   timer.innerText = formatTime(stretchSeconds);
   message.innerHTML = "Stretch session started.<br>Keep going!";
+
+  if (startBtn) {
+    startBtn.disabled = true;
+    startBtn.style.opacity = "0.6";
+  }
 
   stopBtn.disabled = false;
   stopBtn.classList.remove("inactive-stop");
@@ -45,19 +57,19 @@ function startStretchTimer() {
 
     if (stretchSeconds <= 0) {
       clearInterval(stretchInterval);
-    
+
       message.innerHTML =
         "✅ Stretching Complete!<br>Great job taking a break.";
-    
+
       timer.innerText = "DONE";
-    
+
       stopBtn.disabled = true;
       stopBtn.classList.remove("active-stop");
       stopBtn.classList.add("inactive-stop");
-    
-      const startBtn = document.getElementById("startStretchBtn");
-    
+
       if (startBtn) {
+        startBtn.disabled = false;
+        startBtn.style.opacity = "1";
         startBtn.innerText = "Reset Timer";
         startBtn.onclick = resetStretchTimer;
       }
@@ -66,6 +78,7 @@ function startStretchTimer() {
 }
 
 function resetStretchTimer() {
+  clearInterval(stretchInterval);
   stretchSeconds = 180;
 
   document.getElementById("stretchTimer").innerText = "03:00";
@@ -74,10 +87,19 @@ function resetStretchTimer() {
     "You've been standing for 2h 15m.<br>Let's stretch those legs!";
 
   const startBtn = document.getElementById("startStretchBtn");
+  const stopBtn = document.getElementById("stopStretchBtn");
 
   if (startBtn) {
     startBtn.innerText = "Start 3-Min Stretch";
     startBtn.onclick = startStretchTimer;
+    startBtn.disabled = false;
+    startBtn.style.opacity = "1";
+  }
+
+  if (stopBtn) {
+    stopBtn.disabled = true;
+    stopBtn.classList.remove("active-stop");
+    stopBtn.classList.add("inactive-stop");
   }
 }
 
@@ -90,9 +112,20 @@ function stopStretchTimer() {
     "Stretch stopped.<br>You can restart anytime.";
 
   const stopBtn = document.getElementById("stopStretchBtn");
-  stopBtn.disabled = true;
-  stopBtn.classList.remove("active-stop");
-  stopBtn.classList.add("inactive-stop");
+  const startBtn = document.getElementById("startStretchBtn");
+
+  if (stopBtn) {
+    stopBtn.disabled = true;
+    stopBtn.classList.remove("active-stop");
+    stopBtn.classList.add("inactive-stop");
+  }
+
+  if (startBtn) {
+    startBtn.innerText = "Start 3-Min Stretch";
+    startBtn.onclick = startStretchTimer;
+    startBtn.disabled = false;
+    startBtn.style.opacity = "1";
+  }
 }
 
 function snoozeReminder() {
@@ -112,6 +145,7 @@ function snoozeReminder() {
     if (!idleMode) {
       document.getElementById("stretchMessage").innerHTML =
         "Time to stretch again!<br>You’ve been standing for too long.";
+
       alert("Reminder: Time to stretch again!");
     }
   }, snoozeMinutes * 60 * 1000);
@@ -127,6 +161,7 @@ function toggleIdleMode() {
     document.getElementById("stretchMessage").innerHTML =
       "Idle Mode is on.<br>Reminders are paused.";
   } else {
+    resetStretchTimer();
     document.getElementById("stretchMessage").innerHTML =
       "Idle Mode is off.<br>Stretch reminders are active.";
   }
@@ -214,66 +249,50 @@ const historyData = {
   ]
 };
 
-  function showHistory(type, button) {
-    const list = document.getElementById("historyList");
-    const chart = document.getElementById("historyChart");
-  
-    document.querySelectorAll(".history-btn").forEach(btn => {
-      btn.classList.remove("active-history");
-    });
-  
-    button.classList.add("active-history");
-  
-    list.innerHTML = "";
-    chart.innerHTML = "";
-  
-    historyData[type].forEach(item => {
-      const hours = parseFloat(item.time);
-  
-      const bar = document.createElement("div");
-      bar.className = "history-bar-row";
-  
-      bar.innerHTML = `
-        <span>${item.label}</span>
-        <div class="history-bar-bg">
-          <div 
-            class="history-bar-fill ${item.warning ? "warning-bar" : "normal-bar"}"
-            style="width: ${Math.min(hours * 13, 100)}%">
-          </div>
-        </div>
-        <small>${item.time}</small>
-      `;
-  
-      chart.appendChild(bar);
-  
-      const row = document.createElement("div");
-      row.className = "list-card history-item";
-  
-      row.innerHTML = `
-        <b>${item.label} ${item.warning ? "⚠️" : ""}</b>
-        <strong>${item.time}</strong>
-        <small>${item.warning ? "High standing duration detected" : "Normal standing pattern"}</small>
-      `;
-  
-      if (item.warning) {
-        row.onclick = () => {
-          alert(
-            `${item.label} Warning\n\n` +
-            `Standing time: ${item.time}\n` +
-            "You may need more posture changes or stretch breaks."
-          );
-        };
-      }
-  
-      list.appendChild(row);
-    });
-  }
+function getHours(timeString) {
+  const hoursMatch = timeString.match(/(\d+)h/);
+  const minsMatch = timeString.match(/(\d+)m/);
+
+  const hours = hoursMatch ? Number(hoursMatch[1]) : 0;
+  const mins = minsMatch ? Number(minsMatch[1]) : 0;
+
+  return hours + mins / 60;
+}
+
+function showHistory(type, button) {
+  const list = document.getElementById("historyList");
+  const chart = document.getElementById("historyChart");
+
+  if (!list || !chart) return;
+
+  document.querySelectorAll(".history-btn").forEach(btn => {
+    btn.classList.remove("active-history");
+  });
 
   button.classList.add("active-history");
 
   list.innerHTML = "";
+  chart.innerHTML = "";
 
   historyData[type].forEach(item => {
+    const hours = getHours(item.time);
+
+    const bar = document.createElement("div");
+    bar.className = "history-bar-row";
+
+    bar.innerHTML = `
+      <span>${item.label}</span>
+      <div class="history-bar-bg">
+        <div
+          class="history-bar-fill ${item.warning ? "warning-bar" : "normal-bar"}"
+          style="width: ${Math.min(hours * 13, 100)}%">
+        </div>
+      </div>
+      <small>${item.time}</small>
+    `;
+
+    chart.appendChild(bar);
+
     const row = document.createElement("div");
     row.className = "list-card history-item";
 
