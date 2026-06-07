@@ -214,12 +214,60 @@ const historyData = {
   ]
 };
 
-function showHistory(type, button) {
-  const list = document.getElementById("historyList");
-
-  document.querySelectorAll(".history-btn").forEach(btn => {
-    btn.classList.remove("active-history");
-  });
+  function showHistory(type, button) {
+    const list = document.getElementById("historyList");
+    const chart = document.getElementById("historyChart");
+  
+    document.querySelectorAll(".history-btn").forEach(btn => {
+      btn.classList.remove("active-history");
+    });
+  
+    button.classList.add("active-history");
+  
+    list.innerHTML = "";
+    chart.innerHTML = "";
+  
+    historyData[type].forEach(item => {
+      const hours = parseFloat(item.time);
+  
+      const bar = document.createElement("div");
+      bar.className = "history-bar-row";
+  
+      bar.innerHTML = `
+        <span>${item.label}</span>
+        <div class="history-bar-bg">
+          <div 
+            class="history-bar-fill ${item.warning ? "warning-bar" : "normal-bar"}"
+            style="width: ${Math.min(hours * 13, 100)}%">
+          </div>
+        </div>
+        <small>${item.time}</small>
+      `;
+  
+      chart.appendChild(bar);
+  
+      const row = document.createElement("div");
+      row.className = "list-card history-item";
+  
+      row.innerHTML = `
+        <b>${item.label} ${item.warning ? "⚠️" : ""}</b>
+        <strong>${item.time}</strong>
+        <small>${item.warning ? "High standing duration detected" : "Normal standing pattern"}</small>
+      `;
+  
+      if (item.warning) {
+        row.onclick = () => {
+          alert(
+            `${item.label} Warning\n\n` +
+            `Standing time: ${item.time}\n` +
+            "You may need more posture changes or stretch breaks."
+          );
+        };
+      }
+  
+      list.appendChild(row);
+    });
+  }
 
   button.classList.add("active-history");
 
