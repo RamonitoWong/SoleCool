@@ -193,3 +193,65 @@ function startTherapy() {
     "Rest: 5 minutes"
   );
 }
+
+const historyData = {
+  daily: [
+    { label: "Monday", time: "3h 40m", warning: false },
+    { label: "Tuesday", time: "5h 10m", warning: true },
+    { label: "Wednesday", time: "4h 25m", warning: false },
+    { label: "Thursday", time: "6h 15m", warning: true },
+    { label: "Friday", time: "7h 00m", warning: true }
+  ],
+  weekly: [
+    { label: "Week 1", time: "24h 20m", warning: false },
+    { label: "Week 2", time: "28h 45m", warning: true },
+    { label: "Week 3", time: "25h 30m", warning: false }
+  ],
+  monthly: [
+    { label: "January", time: "104h 10m", warning: false },
+    { label: "February", time: "118h 35m", warning: true },
+    { label: "March", time: "96h 50m", warning: false }
+  ]
+};
+
+function showHistory(type, button) {
+  const list = document.getElementById("historyList");
+
+  document.querySelectorAll(".history-btn").forEach(btn => {
+    btn.classList.remove("active-history");
+  });
+
+  button.classList.add("active-history");
+
+  list.innerHTML = "";
+
+  historyData[type].forEach(item => {
+    const row = document.createElement("div");
+    row.className = "list-card history-item";
+
+    row.innerHTML = `
+      <b>${item.label} ${item.warning ? "⚠️" : ""}</b>
+      <strong>${item.time}</strong>
+      <small>${item.warning ? "High standing duration detected" : "Normal standing pattern"}</small>
+    `;
+
+    if (item.warning) {
+      row.onclick = () => {
+        alert(
+          `${item.label} Warning\n\n` +
+          `Standing time: ${item.time}\n` +
+          "You may need more posture changes or stretch breaks."
+        );
+      };
+    }
+
+    list.appendChild(row);
+  });
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const dailyButton = document.querySelector(".history-btn");
+  if (dailyButton) {
+    showHistory("daily", dailyButton);
+  }
+});
