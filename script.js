@@ -259,15 +259,50 @@ function getHours(timeString) {
   return hours + mins / 60;
 }
 
-function showHistory(type, button) {
-  const list = document.getElementById("historyList");
-  const chart = document.getElementById("historyChart");
-
-  if (!list || !chart) return;
-
-  document.querySelectorAll(".history-btn").forEach(btn => {
-    btn.classList.remove("active-history");
-  });
+  function showHistory(type, button) {
+    const chart = document.getElementById("historyChart");
+  
+    if (!chart) return;
+  
+    document.querySelectorAll(".history-btn").forEach(btn => {
+      btn.classList.remove("active-history");
+    });
+  
+    button.classList.add("active-history");
+  
+    chart.innerHTML = "";
+  
+    historyData[type].forEach(item => {
+      const hours = getHours(item.time);
+      const height = Math.min(hours * 12, 100);
+  
+      const bar = document.createElement("div");
+      bar.className = "vertical-bar-item";
+  
+      bar.innerHTML = `
+        <div class="bar-value">${item.time}</div>
+        <div class="vertical-bar-bg">
+          <div 
+            class="vertical-bar-fill ${item.warning ? "warning-bar" : "normal-bar"}"
+            style="height: ${height}%">
+          </div>
+        </div>
+        <small>${item.label.slice(0, 3)}</small>
+      `;
+  
+      if (item.warning) {
+        bar.onclick = () => {
+          alert(
+            `${item.label} Warning\n\n` +
+            `Standing time: ${item.time}\n` +
+            "You may need more posture changes or stretch breaks."
+          );
+        };
+      }
+  
+      chart.appendChild(bar);
+    });
+  }
 
   button.classList.add("active-history");
 
