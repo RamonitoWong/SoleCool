@@ -538,3 +538,13 @@ h1 span {
   cursor: pointer;
   font-weight: 600;
 }
+
+.inactive-stop {
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.active-stop {
+  opacity: 1;
+  pointer-events: auto;
+}
