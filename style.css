@@ -548,3 +548,18 @@ h1 span {
   opacity: 1;
   pointer-events: auto;
 }
+
+.stop-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.inactive-stop {
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.active-stop {
+  opacity: 1;
+  pointer-events: auto;
+}
