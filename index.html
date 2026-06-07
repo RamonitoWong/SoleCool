@@ -302,20 +302,7 @@
       <button class="nav-btn" onclick="openTab('more', this)">•••<br>More</button>
     </nav>
   </main>
-
-  <script>
-    function openTab(tabId, button) {
-      document.querySelectorAll(".tab-page").forEach(page => {
-        page.classList.remove("active");
-      });
-
-      document.querySelectorAll(".nav-btn").forEach(btn => {
-        btn.classList.remove("active");
-      });
-
-      document.getElementById(tabId).classList.add("active");
-      button.classList.add("active");
-    }
-<script src="script.js"></script>
+  
+  <script src="script.js"></script>
 </body>
 </html>
