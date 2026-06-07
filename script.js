@@ -83,3 +83,86 @@ function showPressure(side) {
 
   document.getElementById(side.toLowerCase() + "Btn").classList.add("active-toggle");
 }
+
+let stretchSeconds = 180;
+let stretchInterval = null;
+let snoozeTimeout = null;
+let idleMode = false;
+
+function formatTime(seconds) {
+  const mins = Math.floor(seconds / 60);
+  const secs = seconds % 60;
+
+  return `${String(mins).padStart(2, "0")}:${String(secs).padStart(2, "0")}`;
+}
+
+function startStretchTimer() {
+  if (idleMode) {
+    alert("Idle Mode is on. Stretch reminders are paused.");
+    return;
+  }
+
+  clearInterval(stretchInterval);
+  stretchSeconds = 180;
+
+  document.getElementById("stretchTimer").innerText = formatTime(stretchSeconds);
+  document.getElementById("stretchMessage").innerHTML = "Stretch session started.<br>Keep going!";
+
+  stretchInterval = setInterval(() => {
+    stretchSeconds--;
+    document.getElementById("stretchTimer").innerText = formatTime(stretchSeconds);
+
+    if (stretchSeconds <= 0) {
+      clearInterval(stretchInterval);
+      document.getElementById("stretchMessage").innerHTML = "Stretch complete!<br>Good job.";
+      alert("Stretch completed!");
+    }
+  }, 1000);
+}
+
+function stopStretchTimer() {
+  clearInterval(stretchInterval);
+  stretchSeconds = 180;
+
+  document.getElementById("stretchTimer").innerText = "03:00";
+  document.getElementById("stretchMessage").innerHTML =
+    "Stretch stopped.<br>You can restart anytime.";
+}
+
+function snoozeReminder() {
+  if (idleMode) {
+    alert("Idle Mode is on. Snooze reminder will not run.");
+    return;
+  }
+
+  clearTimeout(snoozeTimeout);
+
+  const snoozeMinutes = Number(document.getElementById("snoozeTime").value);
+
+  document.getElementById("stretchMessage").innerHTML =
+    `Reminder snoozed for ${snoozeMinutes} min.`;
+
+  snoozeTimeout = setTimeout(() => {
+    if (!idleMode) {
+      document.getElementById("stretchMessage").innerHTML =
+        "Time to stretch again!<br>You’ve been standing for too long.";
+
+      alert("Reminder: Time to stretch again!");
+    }
+  }, snoozeMinutes * 60 * 1000);
+}
+
+function toggleIdleMode() {
+  idleMode = document.getElementById("idleMode").checked;
+
+  if (idleMode) {
+    clearTimeout(snoozeTimeout);
+    clearInterval(stretchInterval);
+
+    document.getElementById("stretchMessage").innerHTML =
+      "Idle Mode is on.<br>Reminders are paused.";
+  } else {
+    document.getElementById("stretchMessage").innerHTML =
+      "Idle Mode is off.<br>Stretch reminders are active.";
+  }
+}
