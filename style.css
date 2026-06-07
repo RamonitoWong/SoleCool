@@ -593,3 +593,46 @@ h1 span {
 .history-item:hover {
   transform: scale(1.01);
 }
+
+.history-chart {
+  margin: 14px 0;
+  padding: 14px;
+  border: 1px solid #e2e9f2;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 3px 8px #eff3fa;
+}
+
+.history-bar-row {
+  display: grid;
+  grid-template-columns: 78px 1fr 55px;
+  align-items: center;
+  gap: 8px;
+  margin: 12px 0;
+  font-size: 12px;
+}
+
+.history-bar-bg {
+  height: 11px;
+  background: #edf1f7;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.history-bar-fill {
+  height: 100%;
+  border-radius: 20px;
+}
+
+.normal-bar {
+  background: #075cff;
+}
+
+.warning-bar {
+  background: #ff3b30;
+}
+
+.history-bar-row small {
+  text-align: right;
+  color: #1f3f73;
+}
