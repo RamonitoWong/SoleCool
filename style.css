@@ -500,3 +500,41 @@ h1 span {
     height: calc(100vh - 115px);
   }
 }
+
+.move-card h2 {
+  font-size: 34px;
+  margin: 12px 0;
+  color: #075cff;
+}
+
+.stop-btn {
+  margin-top: 8px;
+  background: #ff3b30 !important;
+}
+
+.snooze-row,
+.idle-row {
+  margin-top: 12px;
+  font-size: 13px;
+}
+
+.snooze-row {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  align-items: center;
+}
+
+.snooze-row select {
+  border: 1px solid #dce5f2;
+  border-radius: 8px;
+  padding: 6px;
+}
+
+.move-card small {
+  display: block;
+  margin-top: 10px;
+  color: #075cff;
+  cursor: pointer;
+  font-weight: 600;
+}
