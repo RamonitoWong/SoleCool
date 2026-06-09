@@ -961,3 +961,27 @@ h1 span {
 .topbar {
   align-items: center;
 }
+.therapy-actions {
+  margin-top: 14px;
+}
+
+.therapy-actions button {
+  width: 100%;
+  padding: 13px;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.therapy-btn-active {
+  background: #075cff;
+  color: white;
+  border: 1px solid #075cff;
+}
+
+.therapy-btn-hollow {
+  background: white;
+  color: #075cff;
+  border: 1px solid #075cff;
+}
