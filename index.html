@@ -325,6 +325,16 @@
       </select>
     </div>
 
+        <div class="therapy-actions">
+  <button id="enableTherapyBtn" class="therapy-btn-active" onclick="enableTherapy()">
+    Enable Therapy ☼
+  </button>
+
+  <button id="stopTherapyBtn" class="therapy-btn-hollow" onclick="stopTherapyMode()">
+    Stop Therapy
+  </button>
+</div>
+
   <div class="therapy-setting">
   <label>Session Timer</label>
   <span id="therapySessionLabel">10 min</span>
@@ -398,15 +408,6 @@
       <button class="nav-btn" onclick="openTab('more', this)">•••<br>More</button>
     </nav>
   </main>
-  <div id="therapyPage" class="therapy-page">
-  <button class="back-therapy" onclick="closeTherapyPage()">‹ Back</button>
-
-  <div class="therapy-header">
-    <div class="therapy-icon">☼</div>
-    <h2>Comfort Therapy</h2>
-    <p>Set your comfort session duration</p>
-  </div>
-    
   <script src="script.js"></script>
 </body>
 </html>
