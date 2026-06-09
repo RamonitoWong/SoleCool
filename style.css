@@ -689,3 +689,72 @@ h1 span {
 .warning-bar {
   background: #ff3b30;
 }
+/* Updated History dropdown + vertical bar chart */
+
+.history-date-select {
+  width: 100%;
+  margin: 12px 0;
+  padding: 10px;
+  border: 1px solid #dce5f2;
+  border-radius: 12px;
+  font-weight: 700;
+  color: #07142f;
+  background: #fff;
+}
+
+.vertical-chart {
+  height: 285px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 12px;
+  padding: 18px 14px;
+  overflow-x: auto;
+}
+
+.vertical-bar-item {
+  flex: 1;
+  min-width: 34px;
+  height: 230px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  cursor: pointer;
+}
+
+.vertical-bar-bg {
+  width: 100%;
+  max-width: 28px;
+  height: 165px;
+  background: #edf1f7;
+  border-radius: 10px;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+.vertical-bar-fill {
+  width: 100%;
+  border-radius: 10px 10px 0 0;
+}
+
+.bar-value {
+  font-size: 10px;
+  margin-bottom: 6px;
+  color: #1f3f73;
+  white-space: nowrap;
+}
+
+.vertical-bar-item small {
+  font-size: 11px;
+  margin-top: 6px;
+}
+
+.normal-bar {
+  background: #075cff;
+}
+
+.warning-bar {
+  background: #ff3b30;
+}
