@@ -758,3 +758,18 @@ h1 span {
 .warning-bar {
   background: #ff3b30;
 }
+.device-card {
+  position: relative;
+}
+
+.device-btn {
+  margin-top: 12px;
+  width: 100%;
+  background: #075cff;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 9px;
+  font-weight: 700;
+  cursor: pointer;
+}
