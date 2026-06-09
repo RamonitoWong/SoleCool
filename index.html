@@ -249,7 +249,6 @@
           <button class="device-btn" id="leftFootBtn" onclick="toggleFootbed('left')">
             Disconnect
           </button>
-          <button class="enable" onclick="openTherapyPage()">Enable Therapy ☼</button>
         </div>
     
         <div class="connect-card device-card">
@@ -324,42 +323,6 @@
         <option value="600">10 min</option>
       </select>
     </div>
-
-        <div class="therapy-actions">
-  <button id="enableTherapyBtn" class="therapy-btn-active" onclick="enableTherapy()">
-    Enable Therapy ☼
-  </button>
-
-  <button id="stopTherapyBtn" class="therapy-btn-hollow" onclick="stopTherapyMode()">
-    Stop Therapy
-  </button>
-</div>
-
-  <div class="therapy-setting">
-  <label>Session Timer</label>
-  <span id="therapySessionLabel">10 min</span>
-</div>
-
-<div class="therapy-setting">
-  <label>Rest Interval</label>
-  <span id="therapyRestLabel">5 min</span>
-</div>
-
-<div class="therapy-setting">
-  <label>Intensity</label>
-  <span id="therapyIntensityLabel">Medium</span>
-</div>
-
-  <h1 id="therapyTimer">10:00</h1>
-
-  <button id="therapyStartPauseBtn" class="therapy-main-btn" onclick="toggleTherapyTimer()">
-    Start
-  </button>
-
-  <button class="therapy-stop-btn" onclick="stopTherapyTimer()">
-    Stop
-  </button>
-</div>
       </div>
     </section>
 <section class="tab-page" id="more">
