@@ -577,3 +577,24 @@ function openTherapyPage() {
   document.getElementById("devicesMain").style.display = "none";
   document.getElementById("therapyPage").style.display = "block";
 }
+function enableTherapy() {
+  const enableBtn = document.getElementById("enableTherapyBtn");
+  const stopBtn = document.getElementById("stopTherapyBtn");
+
+  enableBtn.classList.remove("therapy-btn-active");
+  enableBtn.classList.add("therapy-btn-hollow");
+
+  stopBtn.classList.remove("therapy-btn-hollow");
+  stopBtn.classList.add("therapy-btn-active");
+}
+
+function stopTherapyMode() {
+  const enableBtn = document.getElementById("enableTherapyBtn");
+  const stopBtn = document.getElementById("stopTherapyBtn");
+
+  stopBtn.classList.remove("therapy-btn-active");
+  stopBtn.classList.add("therapy-btn-hollow");
+
+  enableBtn.classList.remove("therapy-btn-hollow");
+  enableBtn.classList.add("therapy-btn-active");
+}
