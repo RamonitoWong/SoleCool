@@ -306,14 +306,19 @@
   </div>
 
   <div class="therapy-setting">
-    <label for="therapyDuration">Session Timer</label>
-    <select id="therapyDuration" onchange="setTherapyDuration()">
-      <option value="300">5 min</option>
-      <option value="600" selected>10 min</option>
-      <option value="900">15 min</option>
-      <option value="1200">20 min</option>
-    </select>
-  </div>
+  <label>Session Timer</label>
+  <span id="therapySessionLabel">10 min</span>
+</div>
+
+<div class="therapy-setting">
+  <label>Rest Interval</label>
+  <span id="therapyRestLabel">5 min</span>
+</div>
+
+<div class="therapy-setting">
+  <label>Intensity</label>
+  <span id="therapyIntensityLabel">Medium</span>
+</div>
 
   <h1 id="therapyTimer">10:00</h1>
 
