@@ -985,3 +985,55 @@ h1 span {
   color: #075cff;
   border: 1px solid #075cff;
 }
+
+/* Final History Arrow Placement Override */
+.history-chart-wrapper {
+  position: relative;
+  margin-top: 15px;
+}
+
+.history-chart-wrapper .history-chart {
+  position: relative;
+  margin: 14px 0;
+  padding: 50px 14px 18px;
+  border: 1px solid #e2e9f2;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 3px 8px #eff3fa;
+}
+
+.history-chart-wrapper .vertical-chart {
+  height: 305px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 12px;
+  overflow-x: auto;
+}
+
+.history-arrow {
+  position: absolute;
+  top: 18px;
+  transform: none;
+  border: none;
+  background: transparent;
+  color: #075cff;
+  font-size: 38px;
+  font-weight: 800;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 10;
+  padding: 0 8px;
+}
+
+.left-arrow {
+  left: 14px;
+}
+
+.right-arrow {
+  right: 14px;
+}
+
+.history-arrow:active {
+  transform: scale(0.92);
+}
