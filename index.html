@@ -20,10 +20,23 @@
         <div class="avatar">HC</div>
       </header>
 
-      <div class="connect-card">
-        <span class="dot green"></span> Connected<br>
-        <small>Left Insole 🔋 92% &nbsp;&nbsp; Right Insole 🔋 90%</small>
-      </div>
+     <div class="connect-card device-card">
+  <span class="dot green" id="leftFootDot"></span>
+  <b>Left Smart Footbed</b><br>
+  <small id="leftFootStatus">Battery 92% • Connected</small>
+  <button class="device-btn" id="leftFootBtn" onclick="toggleFootbed('left')">
+    Disconnect
+  </button>
+</div>
+
+    <div class="connect-card device-card">
+      <span class="dot green" id="rightFootDot"></span>
+      <b>Right Smart Footbed</b><br>
+      <small id="rightFootStatus">Battery 90% • Connected</small>
+      <button class="device-btn" id="rightFootBtn" onclick="toggleFootbed('right')">
+        Disconnect
+      </button>
+    </div>
 
       <div class="blue-card">
         <p>Cumulative Standing</p>
