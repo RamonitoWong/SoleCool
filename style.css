@@ -947,7 +947,6 @@ h1 span {
   transition: 0.25s;
   box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
-
 .switch input:checked + .slider {
   background: #075cff;
 }
@@ -956,7 +955,9 @@ h1 span {
   transform: translateX(20px);
 }
 .logo-img {
-  width: 155px;
+  width: 90px;
   height: auto;
-  object-fit: contain;
+}
+.topbar {
+  align-items: center;
 }
