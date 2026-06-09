@@ -299,7 +299,7 @@ function getHours(timeString) {
 }
 
 function updateHistoryDropdown(type) {
-  const select = document.getElementById("historyDateSelect");
+  const select = document.getElementById("historyMonthSelect");
 
   if (!select) return;
 
@@ -317,7 +317,7 @@ function showHistory(type, button, keepSelection = false) {
   currentHistoryType = type;
 
   const chart = document.getElementById("historyChart");
-  const select = document.getElementById("historyDateSelect");
+  const select = document.getElementById("historyMonthSelect");
   const rangeLabel = document.getElementById("selectedHistoryRange");
 
   if (!chart || !button || !select) return;
