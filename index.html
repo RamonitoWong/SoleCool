@@ -266,16 +266,35 @@
           <small>Interval <span>60 min ›</span></small>
         </div>
     
-        <div class="setting">
-          <b>〰 Comfort Mode <input type="checkbox" checked></b>
-          <p>Adjust comfort support for long standing shifts.</p>
+      <div class="setting">
+      <b>〰 Comfort Mode <input type="checkbox" id="comfortToggle" checked></b>
+      <p>Adjust comfort support for long standing shifts.</p>
     
-          <small>Intensity <span id="comfortValue">Medium</span></small>
-          <input type="range" min="1" max="5" value="3" id="comfortSlider" oninput="updateComfortValue()">
+      <small>Intensity <span id="comfortValue">Medium</span></small>
+      <input
+        type="range"
+        min="1"
+        max="5"
+        value="3"
+        id="comfortSlider"
+        oninput="updateComfortValue()"
+      >
     
-          <small>Session Timer <span>10 min ›</span></small>
-          <small>Rest Interval <span>5 min ›</span></small>
-        </div>
+      <small>Session Timer</small>
+      <select id="comfortSession" class="comfort-select" onchange="updateTherapySettings()">
+        <option value="300">5 min</option>
+        <option value="600" selected>10 min</option>
+        <option value="900">15 min</option>
+        <option value="1200">20 min</option>
+      </select>
+    
+      <small>Rest Interval</small>
+      <select id="comfortRest" class="comfort-select" onchange="updateTherapySettings()">
+        <option value="180">3 min</option>
+        <option value="300" selected>5 min</option>
+        <option value="600">10 min</option>
+      </select>
+    </div>
     
 <div id="therapyPage" class="therapy-page">
   <button class="back-therapy" onclick="closeTherapyPage()">‹ Back</button>
