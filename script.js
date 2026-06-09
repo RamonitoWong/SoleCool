@@ -524,7 +524,9 @@ function stopTherapyTimer() {
   clearInterval(therapyInterval);
   therapyRunning = false;
 
-  therapySeconds = Number(document.getElementById("therapyDuration").value);
+  const sessionSeconds = Number(document.getElementById("comfortSession").value);
+  therapySeconds = sessionSeconds;
+
   document.getElementById("therapyTimer").innerText = formatTime(therapySeconds);
   document.getElementById("therapyStartPauseBtn").innerText = "Start";
 }
@@ -538,4 +540,53 @@ function resetTherapyTimer() {
   const stopBtn = document.getElementById("stopTherapyBtn");
   stopBtn.disabled = true;
   stopBtn.classList.add("inactive-stop");
+}
+function secondsToMinutesText(seconds) {
+  return `${Math.round(seconds / 60)} min`;
+}
+
+function updateTherapySettings() {
+  const sessionSelect = document.getElementById("comfortSession");
+  const restSelect = document.getElementById("comfortRest");
+
+  if (!sessionSelect || !restSelect) return;
+
+  const sessionSeconds = Number(sessionSelect.value);
+  const restSeconds = Number(restSelect.value);
+
+  const therapySessionLabel = document.getElementById("therapySessionLabel");
+  const therapyRestLabel = document.getElementById("therapyRestLabel");
+  const therapyIntensityLabel = document.getElementById("therapyIntensityLabel");
+
+  if (therapySessionLabel) {
+    therapySessionLabel.innerText = secondsToMinutesText(sessionSeconds);
+  }
+
+  if (therapyRestLabel) {
+    therapyRestLabel.innerText = secondsToMinutesText(restSeconds);
+  }
+
+  if (therapyIntensityLabel) {
+    therapyIntensityLabel.innerText =
+      document.getElementById("comfortValue").innerText;
+  }
+
+  if (!therapyRunning) {
+    therapySeconds = sessionSeconds;
+    document.getElementById("therapyTimer").innerText = formatTime(therapySeconds);
+  }
+}
+
+function openTherapyPage() {
+  const comfortToggle = document.getElementById("comfortToggle");
+
+  if (comfortToggle && !comfortToggle.checked) {
+    alert("Comfort Mode is turned off.");
+    return;
+  }
+
+  updateTherapySettings();
+
+  document.getElementById("devicesMain").style.display = "none";
+  document.getElementById("therapyPage").style.display = "block";
 }
