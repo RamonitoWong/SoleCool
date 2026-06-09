@@ -955,3 +955,8 @@ h1 span {
 .switch input:checked + .slider::before {
   transform: translateX(20px);
 }
+.logo-img {
+  width: 155px;
+  height: auto;
+  object-fit: contain;
+}
