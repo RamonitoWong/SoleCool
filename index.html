@@ -277,25 +277,35 @@
           <small>Rest Interval <span>5 min ›</span></small>
         </div>
     
-        <button class="enable" onclick="openTherapyPage()">Enable Therapy ☼</button>
-      </div>
-    
-      <div id="therapyPage" class="therapy-page">
-        <button class="back-therapy" onclick="closeTherapyPage()">‹ Back</button>
-    
-        <h2 class="title">Comfort Therapy</h2>
-    
-        <div class="therapy-card">
-          <div class="therapy-icon">☼</div>
-          <p>Zen comfort session</p>
-          <h1 id="therapyTimer">10:00</h1>
-    
-          <button onclick="startTherapyTimer()">Start Therapy</button>
-          <button class="stop-btn inactive-stop" id="stopTherapyBtn" onclick="stopTherapyTimer()" disabled>
-            Stop
-          </button>
-          <button class="reset-therapy" onclick="resetTherapyTimer()">Reset</button>
-        </div>
+<div id="therapyPage" class="therapy-page">
+  <button class="back-therapy" onclick="closeTherapyPage()">‹ Back</button>
+
+  <div class="therapy-header">
+    <div class="therapy-icon">☼</div>
+    <h2>Comfort Therapy</h2>
+    <p>Set your comfort session duration</p>
+  </div>
+
+  <div class="therapy-setting">
+    <label for="therapyDuration">Session Timer</label>
+    <select id="therapyDuration" onchange="setTherapyDuration()">
+      <option value="300">5 min</option>
+      <option value="600" selected>10 min</option>
+      <option value="900">15 min</option>
+      <option value="1200">20 min</option>
+    </select>
+  </div>
+
+  <h1 id="therapyTimer">10:00</h1>
+
+  <button id="therapyStartPauseBtn" class="therapy-main-btn" onclick="toggleTherapyTimer()">
+    Start
+  </button>
+
+  <button class="therapy-stop-btn" onclick="stopTherapyTimer()">
+    Stop
+  </button>
+</div>
       </div>
     </section>
 
