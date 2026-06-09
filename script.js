@@ -486,3 +486,83 @@ function toggleFootbed(side) {
     button.innerText = "Connect";
   }
 }
+let footbeds = {
+  left: true,
+  right: true
+};
+
+let therapySeconds = 600;
+let therapyInterval = null;
+
+function toggleFootbed(side) {
+  footbeds[side] = !footbeds[side];
+
+  const dot = document.getElementById(`${side}FootDot`);
+  const status = document.getElementById(`${side}FootStatus`);
+  const button = document.getElementById(`${side}FootBtn`);
+
+  if (footbeds[side]) {
+    dot.style.background = "#20c45a";
+    status.innerText =
+      side === "left"
+        ? "Battery 92% • Connected"
+        : "Battery 90% • Connected";
+    button.innerText = "Disconnect";
+  } else {
+    dot.style.background = "#ff3b30";
+    status.innerText = "Disconnected";
+    button.innerText = "Connect";
+  }
+}
+
+function openTherapyPage() {
+  document.getElementById("devicesMain").style.display = "none";
+  document.getElementById("therapyPage").style.display = "block";
+}
+
+function closeTherapyPage() {
+  document.getElementById("therapyPage").style.display = "none";
+  document.getElementById("devicesMain").style.display = "block";
+}
+
+function startTherapyTimer() {
+  clearInterval(therapyInterval);
+
+  const timer = document.getElementById("therapyTimer");
+  const stopBtn = document.getElementById("stopTherapyBtn");
+
+  stopBtn.disabled = false;
+  stopBtn.classList.remove("inactive-stop");
+
+  therapyInterval = setInterval(() => {
+    therapySeconds--;
+    timer.innerText = formatTime(therapySeconds);
+
+    if (therapySeconds <= 0) {
+      clearInterval(therapyInterval);
+      timer.innerText = "DONE";
+      stopBtn.disabled = true;
+      stopBtn.classList.add("inactive-stop");
+      alert("Comfort therapy complete!");
+    }
+  }, 1000);
+}
+
+function stopTherapyTimer() {
+  clearInterval(therapyInterval);
+
+  const stopBtn = document.getElementById("stopTherapyBtn");
+  stopBtn.disabled = true;
+  stopBtn.classList.add("inactive-stop");
+}
+
+function resetTherapyTimer() {
+  clearInterval(therapyInterval);
+  therapySeconds = 600;
+
+  document.getElementById("therapyTimer").innerText = "10:00";
+
+  const stopBtn = document.getElementById("stopTherapyBtn");
+  stopBtn.disabled = true;
+  stopBtn.classList.add("inactive-stop");
+}
