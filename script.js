@@ -4,6 +4,7 @@ let stretchSeconds = 180;
 let stretchInterval = null;
 let snoozeTimeout = null;
 let idleMode = false;
+let currentHistoryType = "daily";
 
 function openTab(tabId, button) {
   document.querySelectorAll(".tab-page").forEach(page => {
@@ -229,23 +230,44 @@ function startTherapy() {
   );
 }
 
-const historyData = {
+const historyRanges = {
   daily: [
-    { label: "Monday", time: "3h 40m", warning: false },
-    { label: "Tuesday", time: "5h 10m", warning: true },
-    { label: "Wednesday", time: "4h 25m", warning: false },
-    { label: "Thursday", time: "6h 15m", warning: true },
-    { label: "Friday", time: "7h 00m", warning: true }
+    "24 May 2026 - 30 May 2026",
+    "31 May 2026 - 6 June 2026",
+    "1 June 2026 - 7 June 2026"
   ],
   weekly: [
-    { label: "Week 1", time: "24h 20m", warning: false },
-    { label: "Week 2", time: "28h 45m", warning: true },
-    { label: "Week 3", time: "25h 30m", warning: false }
+    "24 May 2026 - 30 May 2026",
+    "31 May 2026 - 6 June 2026",
+    "7 June 2026 - 13 June 2026"
   ],
   monthly: [
-    { label: "January", time: "104h 10m", warning: false },
-    { label: "February", time: "118h 35m", warning: true },
-    { label: "March", time: "96h 50m", warning: false }
+    "May 2026",
+    "June 2026",
+    "July 2026"
+  ]
+};
+
+const historyData = {
+  daily: [
+    { label: "Mon", time: "3h 40m", warning: false },
+    { label: "Tue", time: "5h 10m", warning: true },
+    { label: "Wed", time: "4h 25m", warning: false },
+    { label: "Thu", time: "6h 15m", warning: true },
+    { label: "Fri", time: "7h 00m", warning: true },
+    { label: "Sat", time: "2h 50m", warning: false },
+    { label: "Sun", time: "4h 10m", warning: false }
+  ],
+  weekly: [
+    { label: "W1", time: "24h 20m", warning: false },
+    { label: "W2", time: "28h 45m", warning: true },
+    { label: "W3", time: "25h 30m", warning: false },
+    { label: "W4", time: "31h 15m", warning: true }
+  ],
+  monthly: [
+    { label: "May", time: "86h 20m", warning: false },
+    { label: "Jun", time: "118h 35m", warning: true },
+    { label: "Jul", time: "96h 50m", warning: false }
   ]
 };
 
@@ -259,10 +281,35 @@ function getHours(timeString) {
   return hours + mins / 60;
 }
 
+function updateHistoryDropdown(type) {
+  const select = document.getElementById("historyDateSelect");
+
+  if (!select) return;
+
+  select.innerHTML = "";
+
+  historyRanges[type].forEach(range => {
+    const option = document.createElement("option");
+    option.value = range;
+    option.textContent = range;
+    select.appendChild(option);
+  });
+}
+
+function updateHistoryRange() {
+  const activeButton = document.querySelector(".active-history");
+
+  if (activeButton) {
+    showHistory(currentHistoryType, activeButton);
+  }
+}
+
 function showHistory(type, button) {
+  currentHistoryType = type;
+
   const chart = document.getElementById("historyChart");
 
-  if (!chart) return;
+  if (!chart || !button) return;
 
   document.querySelectorAll(".history-btn").forEach(btn => {
     btn.classList.remove("active-history");
@@ -270,11 +317,24 @@ function showHistory(type, button) {
 
   button.classList.add("active-history");
 
+  updateHistoryDropdown(type);
+
   chart.innerHTML = "";
 
   historyData[type].forEach(item => {
     const hours = getHours(item.time);
-    const height = Math.min(hours * 12, 100);
+
+    let maxHours = 8;
+
+    if (type === "weekly") {
+      maxHours = 35;
+    }
+
+    if (type === "monthly") {
+      maxHours = 130;
+    }
+
+    const height = Math.min((hours / maxHours) * 100, 100);
 
     const bar = document.createElement("div");
     bar.className = "vertical-bar-item";
@@ -287,7 +347,7 @@ function showHistory(type, button) {
           style="height: ${height}%">
         </div>
       </div>
-      <small>${item.label.slice(0, 3)}</small>
+      <small>${item.label}</small>
     `;
 
     if (item.warning) {
