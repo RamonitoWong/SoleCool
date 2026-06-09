@@ -215,21 +215,6 @@ function updateComfortValue() {
   value.innerText = levels[slider.value - 1];
 }
 
-function startTherapy() {
-  const level = document.getElementById("comfortValue")?.innerText || "Medium";
-
-  if (navigator.vibrate) {
-    navigator.vibrate([200, 100, 200]);
-  }
-
-  alert(
-    "Comfort Mode Activated\n\n" +
-    `Intensity: ${level}\n` +
-    "Session: 10 minutes\n" +
-    "Rest: 5 minutes"
-  );
-}
-
 const historyRanges = {
   daily: [
     "24 May 2026 - 30 May 2026",
@@ -488,10 +473,36 @@ function toggleFootbed(side) {
     button.innerText = "Connect";
   }
 }
+
 let footbeds = {
   left: true,
   right: true
 };
+
+function toggleFootbed(side) {
+  footbeds[side] = !footbeds[side];
+
+  const dot = document.getElementById(`${side}FootDot`);
+  const status = document.getElementById(`${side}FootStatus`);
+  const button = document.getElementById(`${side}FootBtn`);
+
+  if (footbeds[side]) {
+    dot.style.background = "#20c45a";
+    status.innerText =
+      side === "left"
+        ? "Battery 92% • Connected"
+        : "Battery 90% • Connected";
+    button.innerText = "Disconnect";
+  } else {
+    dot.style.background = "#ff3b30";
+    status.innerText = "Disconnected";
+    button.innerText = "Connect";
+  }
+}
+
+let therapySeconds = 600;
+let therapyInterval = null;
+let therapyRunning = false;
 
 let therapySeconds = 600;
 let therapyInterval = null;
