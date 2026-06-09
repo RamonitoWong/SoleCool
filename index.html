@@ -91,34 +91,36 @@
       </div>
       </section>
 
-        <section class="tab-page" id="history">
-      <h2 class="title">History</h2>
-    
-      <div class="list-card">
-        <b>Today</b>
-        <strong>4h 32m</strong>
-        <small>Standing duration</small>
-      </div>
-    
-      <div class="list-card">
-        <b>This Week</b>
-        <strong>28h 45m</strong>
-        <small>Total standing time</small>
-      </div>
-    
-      <div class="history-toggle">
-        <button class="history-btn active-history" onclick="showHistory('daily', this)">Daily</button>
-        <button class="history-btn" onclick="showHistory('weekly', this)">Weekly</button>
-        <button class="history-btn" onclick="showHistory('monthly', this)">Monthly</button>
-      </div>
-    
-      <div id="historyChart" class="history-chart vertical-chart"></div>
-    
-      <div class="tip">
-        💡 <b>Trend</b><br>
-        Your standing time increases near the end of the week. Consider more short posture changes during long shifts.
-      </div>
-    </section>
+      <section class="tab-page" id="history">
+        <h2 class="title">History</h2>
+      
+        <div class="list-card">
+          <b>Today</b>
+          <strong>4h 32m</strong>
+          <small>Standing duration</small>
+        </div>
+      
+        <div class="list-card">
+          <b>This Week</b>
+          <strong>28h 45m</strong>
+          <small>Total standing time</small>
+        </div>
+      
+        <div class="history-toggle">
+          <button class="history-btn active-history" onclick="showHistory('daily', this)">Daily</button>
+          <button class="history-btn" onclick="showHistory('weekly', this)">Weekly</button>
+          <button class="history-btn" onclick="showHistory('monthly', this)">Monthly</button>
+        </div>
+      
+        <select id="historyDateSelect" class="history-date-select" onchange="updateHistoryRange()"></select>
+      
+        <div id="historyChart" class="history-chart vertical-chart"></div>
+      
+        <div class="tip">
+          💡 <b>Trend</b><br>
+          Your standing time increases near the end of the week. Consider more short posture changes during long shifts.
+        </div>
+      </section>
 
     <section class="tab-page" id="insights">
       <h2 class="title">Pressure Map ⓘ</h2>
