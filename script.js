@@ -476,10 +476,6 @@ let therapySeconds = 600;
 let therapyInterval = null;
 let therapyRunning = false;
 
-let therapySeconds = 600;
-let therapyInterval = null;
-let therapyRunning = false;
-
 function openTherapyPage() {
   document.getElementById("devicesMain").style.display = "none";
   document.getElementById("therapyPage").style.display = "block";
