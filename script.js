@@ -313,14 +313,6 @@ function updateHistoryDropdown(type) {
   });
 }
 
-function updateHistoryRange() {
-  const activeButton = document.querySelector(".active-history");
-
-  if (activeButton) {
-    showHistory(currentHistoryType, activeButton);
-  }
-}
-
 function showHistory(type, button, keepSelection = false) {
   currentHistoryType = type;
 
@@ -475,11 +467,6 @@ function toggleFootbed(side) {
 let therapySeconds = 600;
 let therapyInterval = null;
 let therapyRunning = false;
-
-function openTherapyPage() {
-  document.getElementById("devicesMain").style.display = "none";
-  document.getElementById("therapyPage").style.display = "block";
-}
 
 function closeTherapyPage() {
   stopTherapyTimer();
