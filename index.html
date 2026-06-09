@@ -239,65 +239,63 @@
     </section>
 
     <section class="tab-page" id="devices">
-      <h2 class="title">Devices</h2>
-
-      <div class="connect-card device-card">
-        <span class="dot green" id="leftFootDot"></span>
-        <b>Left Smart Footbed</b><br>
-        <small id="leftFootStatus">Battery 92% • Connected</small>
-        <button class="device-btn" id="leftFootBtn" onclick="toggleFootbed('left')">
-          Disconnect
-        </button>
-      </div>
-      
-      <div class="connect-card device-card">
-        <span class="dot green" id="rightFootDot"></span>
-        <b>Right Smart Footbed</b><br>
-        <small id="rightFootStatus">Battery 90% • Connected</small>
-        <button class="device-btn" id="rightFootBtn" onclick="toggleFootbed('right')">
-          Disconnect
-        </button>
-      </div>
-
-      <div class="setting">
-        <b>🌀 Haptic Reminders <input type="checkbox" checked></b>
-        <p>Gentle vibrations to remind users to stretch or rest.</p>
-        <small>Interval <span>60 min ›</span></small>
-      </div>
-
-     <div class="setting">
-      <b>〰 Comfort Mode <input type="checkbox" checked></b>
-      <p>Adjust comfort support for long standing shifts.</p>
+      <div id="devicesMain">
+        <h2 class="title">Devices</h2>
     
-      <small>Intensity <span>Medium ›</span></small>
-      <small>Session Timer <span>10 min ›</span></small>
-      <small>Rest Interval <span>5 min ›</span></small>
-    </div>
-
-      <button class="enable">Enable Therapy ☼</button>
-    </section>
-
-    <section class="tab-page" id="more">
-      <h2 class="title">More</h2>
-
-      <div class="list-card">
-        <b>Profile</b>
-        <span>›</span>
+        <div class="connect-card device-card">
+          <span class="dot green" id="leftFootDot"></span>
+          <b>Left Smart Footbed</b><br>
+          <small id="leftFootStatus">Battery 92% • Connected</small>
+          <button class="device-btn" id="leftFootBtn" onclick="toggleFootbed('left')">
+            Disconnect
+          </button>
+        </div>
+    
+        <div class="connect-card device-card">
+          <span class="dot green" id="rightFootDot"></span>
+          <b>Right Smart Footbed</b><br>
+          <small id="rightFootStatus">Battery 90% • Connected</small>
+          <button class="device-btn" id="rightFootBtn" onclick="toggleFootbed('right')">
+            Disconnect
+          </button>
+        </div>
+    
+        <div class="setting">
+          <b>🌀 Haptic Reminders <input type="checkbox" checked></b>
+          <p>Gentle vibrations to remind users to stretch or rest.</p>
+          <small>Interval <span>60 min ›</span></small>
+        </div>
+    
+        <div class="setting">
+          <b>〰 Comfort Mode <input type="checkbox" checked></b>
+          <p>Adjust comfort support for long standing shifts.</p>
+    
+          <small>Intensity <span id="comfortValue">Medium</span></small>
+          <input type="range" min="1" max="5" value="3" id="comfortSlider" oninput="updateComfortValue()">
+    
+          <small>Session Timer <span>10 min ›</span></small>
+          <small>Rest Interval <span>5 min ›</span></small>
+        </div>
+    
+        <button class="enable" onclick="openTherapyPage()">Enable Therapy ☼</button>
       </div>
-
-      <div class="list-card">
-        <b>Exercise Recommendations</b>
-        <span>›</span>
-      </div>
-
-      <div class="list-card">
-        <b>Safety Settings</b>
-        <span>›</span>
-      </div>
-
-      <div class="list-card">
-        <b>Help & Support</b>
-        <span>›</span>
+    
+      <div id="therapyPage" class="therapy-page">
+        <button class="back-therapy" onclick="closeTherapyPage()">‹ Back</button>
+    
+        <h2 class="title">Comfort Therapy</h2>
+    
+        <div class="therapy-card">
+          <div class="therapy-icon">☼</div>
+          <p>Zen comfort session</p>
+          <h1 id="therapyTimer">10:00</h1>
+    
+          <button onclick="startTherapyTimer()">Start Therapy</button>
+          <button class="stop-btn inactive-stop" id="stopTherapyBtn" onclick="stopTherapyTimer()" disabled>
+            Stop
+          </button>
+          <button class="reset-therapy" onclick="resetTherapyTimer()">Reset</button>
+        </div>
       </div>
     </section>
 
