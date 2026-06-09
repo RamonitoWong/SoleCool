@@ -91,19 +91,19 @@
       </div>
       </section>
 
-      <section class="tab-page" id="history">
+           <section class="tab-page" id="history">
         <h2 class="title">History</h2>
       
         <div class="list-card">
           <b>Today</b>
-          <strong>4h 32m</strong>
-          <small>Standing duration</small>
+          <strong id="todayStandingTime">4h 32m</strong>
+          <small id="todayDateLabel">Standing duration • 7 June 2026</small>
         </div>
       
         <div class="list-card">
           <b>This Week</b>
-          <strong>28h 45m</strong>
-          <small>Total standing time</small>
+          <strong id="weekStandingTime">28h 45m</strong>
+          <small id="weekDateLabel">1 June 2026 - 7 June 2026</small>
         </div>
       
         <div class="history-toggle">
@@ -114,6 +114,10 @@
       
         <select id="historyDateSelect" class="history-date-select" onchange="updateHistoryRange()"></select>
       
+        <p id="selectedHistoryRange" class="selected-history-range">
+          Viewing: 1 June 2026 - 7 June 2026
+        </p>
+      
         <div id="historyChart" class="history-chart vertical-chart"></div>
       
         <div class="tip">
@@ -121,7 +125,6 @@
           Your standing time increases near the end of the week. Consider more short posture changes during long shifts.
         </div>
       </section>
-
     <section class="tab-page" id="insights">
       <h2 class="title">Pressure Map ⓘ</h2>
 
