@@ -461,3 +461,28 @@ document.addEventListener("DOMContentLoaded", () => {
     showHistory("daily", dailyButton);
   }
 });
+let footbeds = {
+  left: true,
+  right: true
+};
+
+function toggleFootbed(side) {
+  footbeds[side] = !footbeds[side];
+
+  const dot = document.getElementById(`${side}FootDot`);
+  const status = document.getElementById(`${side}FootStatus`);
+  const button = document.getElementById(`${side}FootBtn`);
+
+  if (footbeds[side]) {
+    dot.style.background = "#20c45a";
+    status.innerText =
+      side === "left"
+        ? "Battery 92% • Connected"
+        : "Battery 90% • Connected";
+    button.innerText = "Disconnect";
+  } else {
+    dot.style.background = "#ff3b30";
+    status.innerText = "Disconnected";
+    button.innerText = "Connect";
+  }
+}
