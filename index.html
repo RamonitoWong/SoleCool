@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SoleCool App Interface</title>
   <link rel="stylesheet" href="style.css" />
+  
 </head>
 
 <body>
@@ -111,11 +112,23 @@
     Viewing: 1 June 2026 - 7 June 2026
   </p>
 
-  <div class="history-chart-wrapper">
-    <button class="history-arrow" onclick="previousHistoryWeek()">‹</button>
-    <div id="historyChart" class="history-chart vertical-chart"></div>
-    <button class="history-arrow" onclick="nextHistoryWeek()">›</button>
+ <div class="history-chart-wrapper">
+
+  <button class="history-arrow left-arrow"
+          onclick="previousHistoryWeek()">
+    ‹
+  </button>
+
+  <div id="historyChart"
+       class="history-chart vertical-chart">
   </div>
+
+  <button class="history-arrow right-arrow"
+          onclick="nextHistoryWeek()">
+    ›
+  </button>
+
+</div>
 
   <div class="tip">
     💡 <b>Trend</b><br>
