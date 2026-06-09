@@ -260,15 +260,31 @@
           </button>
         </div>
     
-        <div class="setting">
-          <b>🌀 Haptic Reminders <label class="switch">
-          <input type="checkbox" checked>
-          <span class="slider"></span>
-          </label>
-          </b>
-          <p>Gentle vibrations to remind users to stretch or rest.</p>
-          <small>Interval <span>60 min ›</span></small>
-        </div>
+       <div class="setting">
+  <b>
+    🌀 Haptic Reminders
+    <label class="switch">
+      <input type="checkbox" id="hapticToggle" checked>
+      <span class="slider"></span>
+    </label>
+  </b>
+
+  <p>Gentle vibrations to remind users to stretch or rest.</p>
+
+  <small>Interval</small>
+  <select id="hapticInterval" class="comfort-select">
+    <option value="10">10 min</option>
+    <option value="20">20 min</option>
+    <option value="30">30 min</option>
+    <option value="40">40 min</option>
+    <option value="50">50 min</option>
+    <option value="60" selected>1 hr</option>
+    <option value="75">1 hr 15 min</option>
+    <option value="90">1 hr 30 min</option>
+    <option value="105">1 hr 45 min</option>
+    <option value="180">3 hrs</option>
+  </select>
+</div>
     
       <div class="setting">
       <b>〰 Comfort Mode <label class="switch">
