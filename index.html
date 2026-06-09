@@ -19,24 +19,6 @@
         </div>
         <div class="avatar">HC</div>
       </header>
-
-         <div class="connect-card device-card">
-        <span class="dot green" id="leftFootDot"></span>
-        <b>Left Smart Footbed</b><br>
-        <small id="leftFootStatus">Battery 92% • Connected</small>
-        <button class="device-btn" id="leftFootBtn" onclick="toggleFootbed('left')">
-          Disconnect
-        </button>
-      </div>
-      
-      <div class="connect-card device-card">
-        <span class="dot green" id="rightFootDot"></span>
-        <b>Right Smart Footbed</b><br>
-        <small id="rightFootStatus">Battery 90% • Connected</small>
-        <button class="device-btn" id="rightFootBtn" onclick="toggleFootbed('right')">
-          Disconnect
-        </button>
-      </div>
       
       <div class="blue-card">
         <p>Cumulative Standing</p>
@@ -259,14 +241,22 @@
     <section class="tab-page" id="devices">
       <h2 class="title">Devices</h2>
 
-      <div class="connect-card">
-        <span class="dot green"></span> Left Smart Footbed<br>
-        <small>Battery 92% • Connected</small>
+      <div class="connect-card device-card">
+        <span class="dot green" id="leftFootDot"></span>
+        <b>Left Smart Footbed</b><br>
+        <small id="leftFootStatus">Battery 92% • Connected</small>
+        <button class="device-btn" id="leftFootBtn" onclick="toggleFootbed('left')">
+          Disconnect
+        </button>
       </div>
-
-      <div class="connect-card">
-        <span class="dot green"></span> Right Smart Footbed<br>
-        <small>Battery 90% • Connected</small>
+      
+      <div class="connect-card device-card">
+        <span class="dot green" id="rightFootDot"></span>
+        <b>Right Smart Footbed</b><br>
+        <small id="rightFootStatus">Battery 90% • Connected</small>
+        <button class="device-btn" id="rightFootBtn" onclick="toggleFootbed('right')">
+          Disconnect
+        </button>
       </div>
 
       <div class="setting">
