@@ -249,6 +249,7 @@
           <button class="device-btn" id="leftFootBtn" onclick="toggleFootbed('left')">
             Disconnect
           </button>
+          <button class="enable" onclick="openTherapyPage()">Enable Therapy ☼</button>
         </div>
     
         <div class="connect-card device-card">
@@ -323,15 +324,6 @@
         <option value="600">10 min</option>
       </select>
     </div>
-    
-<div id="therapyPage" class="therapy-page">
-  <button class="back-therapy" onclick="closeTherapyPage()">‹ Back</button>
-
-  <div class="therapy-header">
-    <div class="therapy-icon">☼</div>
-    <h2>Comfort Therapy</h2>
-    <p>Set your comfort session duration</p>
-  </div>
 
   <div class="therapy-setting">
   <label>Session Timer</label>
@@ -406,7 +398,15 @@
       <button class="nav-btn" onclick="openTab('more', this)">•••<br>More</button>
     </nav>
   </main>
-  
+  <div id="therapyPage" class="therapy-page">
+  <button class="back-therapy" onclick="closeTherapyPage()">‹ Back</button>
+
+  <div class="therapy-header">
+    <div class="therapy-icon">☼</div>
+    <h2>Comfort Therapy</h2>
+    <p>Set your comfort session duration</p>
+  </div>
+    
   <script src="script.js"></script>
 </body>
 </html>
