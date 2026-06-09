@@ -215,78 +215,79 @@ function updateComfortValue() {
   value.innerText = levels[slider.value - 1];
 }
 
-const historyRanges = {
-  daily: [
-    "24 May 2026 - 30 May 2026",
-    "31 May 2026 - 6 June 2026",
-    "1 June 2026 - 7 June 2026"
+let currentMonth = "June 2026";
+let currentWeekIndex = 0;
+
+const monthWeeks = {
+  "May 2026": [
+    {
+      range: "24 May 2026 - 30 May 2026",
+      data: [
+        { label: "Sun", time: "2h 10m", warning: false },
+        { label: "Mon", time: "3h 20m", warning: false },
+        { label: "Tue", time: "4h 40m", warning: false },
+        { label: "Wed", time: "5h 20m", warning: true },
+        { label: "Thu", time: "4h 10m", warning: false },
+        { label: "Fri", time: "6h 30m", warning: true },
+        { label: "Sat", time: "2h 45m", warning: false }
+      ]
+    }
   ],
-  weekly: [
-    "24 May 2026 - 30 May 2026",
-    "31 May 2026 - 6 June 2026",
-    "7 June 2026 - 13 June 2026"
+
+  "June 2026": [
+    {
+      range: "1 June 2026 - 7 June 2026",
+      data: [
+        { label: "Mon", time: "3h 40m", warning: false },
+        { label: "Tue", time: "5h 10m", warning: true },
+        { label: "Wed", time: "4h 25m", warning: false },
+        { label: "Thu", time: "6h 15m", warning: true },
+        { label: "Fri", time: "7h 00m", warning: true },
+        { label: "Sat", time: "2h 35m", warning: false },
+        { label: "Sun", time: "4h 32m", warning: false }
+      ]
+    },
+    {
+      range: "8 June 2026 - 14 June 2026",
+      data: [
+        { label: "Mon", time: "4h 00m", warning: false },
+        { label: "Tue", time: "4h 45m", warning: false },
+        { label: "Wed", time: "6h 10m", warning: true },
+        { label: "Thu", time: "5h 30m", warning: true },
+        { label: "Fri", time: "3h 55m", warning: false },
+        { label: "Sat", time: "2h 20m", warning: false },
+        { label: "Sun", time: "3h 10m", warning: false }
+      ]
+    },
+    {
+      range: "15 June 2026 - 21 June 2026",
+      data: [
+        { label: "Mon", time: "3h 30m", warning: false },
+        { label: "Tue", time: "4h 20m", warning: false },
+        { label: "Wed", time: "5h 40m", warning: true },
+        { label: "Thu", time: "4h 50m", warning: false },
+        { label: "Fri", time: "6h 20m", warning: true },
+        { label: "Sat", time: "3h 00m", warning: false },
+        { label: "Sun", time: "2h 45m", warning: false }
+      ]
+    }
   ],
-  monthly: [
-    "May 2026",
-    "June 2026",
-    "July 2026"
+
+  "July 2026": [
+    {
+      range: "1 July 2026 - 7 July 2026",
+      data: [
+        { label: "Wed", time: "3h 20m", warning: false },
+        { label: "Thu", time: "4h 10m", warning: false },
+        { label: "Fri", time: "5h 50m", warning: true },
+        { label: "Sat", time: "2h 30m", warning: false },
+        { label: "Sun", time: "3h 15m", warning: false },
+        { label: "Mon", time: "4h 40m", warning: false },
+        { label: "Tue", time: "6h 05m", warning: true }
+      ]
+    }
   ]
 };
-
-const historyData = {
-  daily: {
-    "24 May 2026 - 30 May 2026": [
-      { label: "Sun", time: "2h 10m", warning: false },
-      { label: "Mon", time: "3h 20m", warning: false },
-      { label: "Tue", time: "4h 40m", warning: false },
-      { label: "Wed", time: "5h 20m", warning: true },
-      { label: "Thu", time: "4h 10m", warning: false },
-      { label: "Fri", time: "6h 30m", warning: true },
-      { label: "Sat", time: "2h 45m", warning: false }
-    ],
-    "31 May 2026 - 6 June 2026": [
-      { label: "Sun", time: "3h 00m", warning: false },
-      { label: "Mon", time: "4h 05m", warning: false },
-      { label: "Tue", time: "5h 45m", warning: true },
-      { label: "Wed", time: "4h 30m", warning: false },
-      { label: "Thu", time: "6h 00m", warning: true },
-      { label: "Fri", time: "5h 20m", warning: true },
-      { label: "Sat", time: "2h 05m", warning: false }
-    ],
-    "1 June 2026 - 7 June 2026": [
-      { label: "Mon", time: "3h 40m", warning: false },
-      { label: "Tue", time: "5h 10m", warning: true },
-      { label: "Wed", time: "4h 25m", warning: false },
-      { label: "Thu", time: "6h 15m", warning: true },
-      { label: "Fri", time: "7h 00m", warning: true },
-      { label: "Sat", time: "2h 35m", warning: false },
-      { label: "Sun", time: "4h 12m", warning: false }
-    ]
-  },
-  weekly: {
-    "24 May 2026 - 30 May 2026": [
-      { label: "Week", time: "29h 05m", warning: true }
-    ],
-    "31 May 2026 - 6 June 2026": [
-      { label: "Week", time: "30h 45m", warning: true }
-    ],
-    "7 June 2026 - 13 June 2026": [
-      { label: "Week", time: "24h 55m", warning: false }
-    ]
-  },
-  monthly: {
-    "May 2026": [
-      { label: "May", time: "86h 20m", warning: false }
-    ],
-    "June 2026": [
-      { label: "Jun", time: "118h 35m", warning: true }
-    ],
-    "July 2026": [
-      { label: "Jul", time: "96h 50m", warning: false }
-    ]
-  }
-};
-
 
 function getHours(timeString) {
   const hoursMatch = timeString.match(/(\d+)h/);
@@ -298,60 +299,65 @@ function getHours(timeString) {
   return hours + mins / 60;
 }
 
-function updateHistoryDropdown(type) {
-  const select = document.getElementById("historyMonthSelect");
+function getHistoryMonthSelect() {
+  return (
+    document.getElementById("historyMonthSelect") ||
+    document.getElementById("historyDateSelect")
+  );
+}
+
+function setupHistoryMonthDropdown() {
+  const select = getHistoryMonthSelect();
 
   if (!select) return;
 
   select.innerHTML = "";
 
-  historyRanges[type].forEach(range => {
+  Object.keys(monthWeeks).forEach(month => {
     const option = document.createElement("option");
-    option.value = range;
-    option.textContent = range;
+    option.value = month;
+    option.textContent = month;
+
+    if (month === currentMonth) {
+      option.selected = true;
+    }
+
     select.appendChild(option);
   });
 }
 
-function showHistory(type, button, keepSelection = false) {
-  currentHistoryType = type;
-
+function renderHistoryChart() {
   const chart = document.getElementById("historyChart");
-  const select = document.getElementById("historyMonthSelect");
   const rangeLabel = document.getElementById("selectedHistoryRange");
+  const weekStandingTime = document.getElementById("weekStandingTime");
+  const weekDateLabel = document.getElementById("weekDateLabel");
+  const todayStandingTime = document.getElementById("todayStandingTime");
+  const todayDateLabel = document.getElementById("todayDateLabel");
 
-  if (!chart || !button || !select) return;
+  if (!chart) return;
 
-  document.querySelectorAll(".history-btn").forEach(btn => {
-    btn.classList.remove("active-history");
-  });
+  const weeks = monthWeeks[currentMonth];
 
-  button.classList.add("active-history");
+  if (!weeks || weeks.length === 0) return;
 
-  if (!keepSelection) {
-    updateHistoryDropdown(type);
-  }
+  if (currentWeekIndex < 0) currentWeekIndex = 0;
+  if (currentWeekIndex > weeks.length - 1) currentWeekIndex = weeks.length - 1;
 
-  const selectedRange = select.value;
-
-  if (rangeLabel) {
-    rangeLabel.innerText = `Viewing: ${selectedRange}`;
-  }
+  const week = weeks[currentWeekIndex];
 
   chart.innerHTML = "";
 
-  const selectedData = historyData[type][selectedRange];
+  if (rangeLabel) {
+    rangeLabel.innerText = `Viewing: ${week.range}`;
+  }
 
-  selectedData.forEach(item => {
+  let totalMinutes = 0;
 
+  week.data.forEach(item => {
     const hours = getHours(item.time);
+    totalMinutes += Math.round(hours * 60);
 
-    let maxHours = 8;
-
-    if (type === "weekly") maxHours = 35;
-    if (type === "monthly") maxHours = 130;
-
-    const height = Math.min((hours / maxHours) * 100, 100);
+    const height = Math.min((hours / 8) * 100, 100);
 
     const bar = document.createElement("div");
     bar.className = "vertical-bar-item";
@@ -367,77 +373,83 @@ function showHistory(type, button, keepSelection = false) {
       <small>${item.label}</small>
     `;
 
+    if (item.warning) {
+      bar.onclick = () => {
+        alert(
+          `${item.label} Warning\n\n` +
+          `Standing time: ${item.time}\n` +
+          "You may need more posture changes or stretch breaks."
+        );
+      };
+    }
+
     chart.appendChild(bar);
   });
 
-  updateHistorySummary(type, selectedRange);
-}
+  const totalHours = Math.floor(totalMinutes / 60);
+  const mins = totalMinutes % 60;
 
-function updateHistorySummary(type, selectedRange) {
-
-  const todayStandingTime =
-    document.getElementById("todayStandingTime");
-
-  const todayDateLabel =
-    document.getElementById("todayDateLabel");
-
-  const weekStandingTime =
-    document.getElementById("weekStandingTime");
-
-  const weekDateLabel =
-    document.getElementById("weekDateLabel");
-
-  if (todayStandingTime)
-    todayStandingTime.innerText = "4h 12m";
-
-  if (todayDateLabel)
-    todayDateLabel.innerText =
-      "Standing duration • 7 June 2026";
-
-  if (type === "daily") {
-    weekStandingTime.innerText = "33h 17m";
-    weekDateLabel.innerText = selectedRange;
+  if (weekStandingTime) {
+    weekStandingTime.innerText = `${totalHours}h ${mins}m`;
   }
 
-  if (type === "weekly") {
-    weekStandingTime.innerText =
-      historyData.weekly[selectedRange][0].time;
-
-    weekDateLabel.innerText = selectedRange;
+  if (weekDateLabel) {
+    weekDateLabel.innerText = week.range;
   }
 
-  if (type === "monthly") {
-    weekStandingTime.innerText =
-      historyData.monthly[selectedRange][0].time;
+  if (todayStandingTime) {
+    todayStandingTime.innerText = "4h 32m";
+  }
 
-    weekDateLabel.innerText = selectedRange;
+  if (todayDateLabel) {
+    todayDateLabel.innerText = "Standing duration • 7 June 2026";
   }
 }
 
+function changeHistoryMonth() {
+  const select = getHistoryMonthSelect();
+
+  if (!select) return;
+
+  currentMonth = select.value;
+  currentWeekIndex = 0;
+  renderHistoryChart();
+}
+
+function previousHistoryWeek() {
+  if (currentWeekIndex > 0) {
+    currentWeekIndex--;
+    renderHistoryChart();
+  }
+}
+
+function nextHistoryWeek() {
+  const weeks = monthWeeks[currentMonth];
+
+  if (weeks && currentWeekIndex < weeks.length - 1) {
+    currentWeekIndex++;
+    renderHistoryChart();
+  }
+}
+
+/* Keeps old button-based code from breaking if old HTML is still present */
 function updateHistoryRange() {
-  const activeButton =
-    document.querySelector(".active-history");
+  changeHistoryMonth();
+}
 
-  if (activeButton) {
-    showHistory(
-      currentHistoryType,
-      activeButton,
-      true
-    );
-  }
+function showHistory() {
+  renderHistoryChart();
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  setupHistoryMonthDropdown();
+  renderHistoryChart();
 
-  updateHistoryDropdown("daily");
-
-  const dailyButton =
-    document.querySelector(".history-btn");
-
-  if (dailyButton) {
-    showHistory("daily", dailyButton);
+  if (typeof updateTherapySettings === "function") {
+    updateTherapySettings();
   }
 });
+
 let footbeds = {
   left: true,
   right: true
