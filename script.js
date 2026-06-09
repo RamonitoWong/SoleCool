@@ -249,27 +249,59 @@ const historyRanges = {
 };
 
 const historyData = {
-  daily: [
-    { label: "Mon", time: "3h 40m", warning: false },
-    { label: "Tue", time: "5h 10m", warning: true },
-    { label: "Wed", time: "4h 25m", warning: false },
-    { label: "Thu", time: "6h 15m", warning: true },
-    { label: "Fri", time: "7h 00m", warning: true },
-    { label: "Sat", time: "2h 50m", warning: false },
-    { label: "Sun", time: "4h 10m", warning: false }
-  ],
-  weekly: [
-    { label: "W1", time: "24h 20m", warning: false },
-    { label: "W2", time: "28h 45m", warning: true },
-    { label: "W3", time: "25h 30m", warning: false },
-    { label: "W4", time: "31h 15m", warning: true }
-  ],
-  monthly: [
-    { label: "May", time: "86h 20m", warning: false },
-    { label: "Jun", time: "118h 35m", warning: true },
-    { label: "Jul", time: "96h 50m", warning: false }
-  ]
+  daily: {
+    "24 May 2026 - 30 May 2026": [
+      { label: "Sun", time: "2h 10m", warning: false },
+      { label: "Mon", time: "3h 20m", warning: false },
+      { label: "Tue", time: "4h 40m", warning: false },
+      { label: "Wed", time: "5h 20m", warning: true },
+      { label: "Thu", time: "4h 10m", warning: false },
+      { label: "Fri", time: "6h 30m", warning: true },
+      { label: "Sat", time: "2h 45m", warning: false }
+    ],
+    "31 May 2026 - 6 June 2026": [
+      { label: "Sun", time: "3h 00m", warning: false },
+      { label: "Mon", time: "4h 05m", warning: false },
+      { label: "Tue", time: "5h 45m", warning: true },
+      { label: "Wed", time: "4h 30m", warning: false },
+      { label: "Thu", time: "6h 00m", warning: true },
+      { label: "Fri", time: "5h 20m", warning: true },
+      { label: "Sat", time: "2h 05m", warning: false }
+    ],
+    "1 June 2026 - 7 June 2026": [
+      { label: "Mon", time: "3h 40m", warning: false },
+      { label: "Tue", time: "5h 10m", warning: true },
+      { label: "Wed", time: "4h 25m", warning: false },
+      { label: "Thu", time: "6h 15m", warning: true },
+      { label: "Fri", time: "7h 00m", warning: true },
+      { label: "Sat", time: "2h 35m", warning: false },
+      { label: "Sun", time: "4h 12m", warning: false }
+    ]
+  },
+  weekly: {
+    "24 May 2026 - 30 May 2026": [
+      { label: "Week", time: "29h 05m", warning: true }
+    ],
+    "31 May 2026 - 6 June 2026": [
+      { label: "Week", time: "30h 45m", warning: true }
+    ],
+    "7 June 2026 - 13 June 2026": [
+      { label: "Week", time: "24h 55m", warning: false }
+    ]
+  },
+  monthly: {
+    "May 2026": [
+      { label: "May", time: "86h 20m", warning: false }
+    ],
+    "June 2026": [
+      { label: "Jun", time: "118h 35m", warning: true }
+    ],
+    "July 2026": [
+      { label: "Jul", time: "96h 50m", warning: false }
+    ]
+  }
 };
+
 
 function getHours(timeString) {
   const hoursMatch = timeString.match(/(\d+)h/);
@@ -304,12 +336,14 @@ function updateHistoryRange() {
   }
 }
 
-function showHistory(type, button) {
+function showHistory(type, button, keepSelection = false) {
   currentHistoryType = type;
 
   const chart = document.getElementById("historyChart");
+  const select = document.getElementById("historyDateSelect");
+  const rangeLabel = document.getElementById("selectedHistoryRange");
 
-  if (!chart || !button) return;
+  if (!chart || !button || !select) return;
 
   document.querySelectorAll(".history-btn").forEach(btn => {
     btn.classList.remove("active-history");
@@ -317,22 +351,28 @@ function showHistory(type, button) {
 
   button.classList.add("active-history");
 
-  updateHistoryDropdown(type);
+  if (!keepSelection) {
+    updateHistoryDropdown(type);
+  }
+
+  const selectedRange = select.value;
+
+  if (rangeLabel) {
+    rangeLabel.innerText = `Viewing: ${selectedRange}`;
+  }
 
   chart.innerHTML = "";
 
-  historyData[type].forEach(item => {
+  const selectedData = historyData[type][selectedRange];
+
+  selectedData.forEach(item => {
+
     const hours = getHours(item.time);
 
     let maxHours = 8;
 
-    if (type === "weekly") {
-      maxHours = 35;
-    }
-
-    if (type === "monthly") {
-      maxHours = 130;
-    }
+    if (type === "weekly") maxHours = 35;
+    if (type === "monthly") maxHours = 130;
 
     const height = Math.min((hours / maxHours) * 100, 100);
 
@@ -344,28 +384,78 @@ function showHistory(type, button) {
       <div class="vertical-bar-bg">
         <div
           class="vertical-bar-fill ${item.warning ? "warning-bar" : "normal-bar"}"
-          style="height: ${height}%">
+          style="height:${height}%">
         </div>
       </div>
       <small>${item.label}</small>
     `;
 
-    if (item.warning) {
-      bar.onclick = () => {
-        alert(
-          `${item.label} Warning\n\n` +
-          `Standing time: ${item.time}\n` +
-          "You may need more posture changes or stretch breaks."
-        );
-      };
-    }
-
     chart.appendChild(bar);
   });
+
+  updateHistorySummary(type, selectedRange);
+}
+
+function updateHistorySummary(type, selectedRange) {
+
+  const todayStandingTime =
+    document.getElementById("todayStandingTime");
+
+  const todayDateLabel =
+    document.getElementById("todayDateLabel");
+
+  const weekStandingTime =
+    document.getElementById("weekStandingTime");
+
+  const weekDateLabel =
+    document.getElementById("weekDateLabel");
+
+  if (todayStandingTime)
+    todayStandingTime.innerText = "4h 12m";
+
+  if (todayDateLabel)
+    todayDateLabel.innerText =
+      "Standing duration • 7 June 2026";
+
+  if (type === "daily") {
+    weekStandingTime.innerText = "33h 17m";
+    weekDateLabel.innerText = selectedRange;
+  }
+
+  if (type === "weekly") {
+    weekStandingTime.innerText =
+      historyData.weekly[selectedRange][0].time;
+
+    weekDateLabel.innerText = selectedRange;
+  }
+
+  if (type === "monthly") {
+    weekStandingTime.innerText =
+      historyData.monthly[selectedRange][0].time;
+
+    weekDateLabel.innerText = selectedRange;
+  }
+}
+
+function updateHistoryRange() {
+  const activeButton =
+    document.querySelector(".active-history");
+
+  if (activeButton) {
+    showHistory(
+      currentHistoryType,
+      activeButton,
+      true
+    );
+  }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  const dailyButton = document.querySelector(".history-btn");
+
+  updateHistoryDropdown("daily");
+
+  const dailyButton =
+    document.querySelector(".history-btn");
 
   if (dailyButton) {
     showHistory("daily", dailyButton);
