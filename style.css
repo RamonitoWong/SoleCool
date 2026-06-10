@@ -665,44 +665,6 @@ body {
   border: 1px solid #075cff;
 }
 
-.therapy-page {
-  display: none;
-  padding-bottom: 95px;
-}
-
-.therapy-header {
-  text-align: center;
-  margin-top: 30px;
-}
-
-.therapy-icon {
-  font-size: 52px;
-}
-
-.therapy-header h2 {
-  font-size: 30px;
-  margin: 12px 0 6px;
-}
-
-.therapy-header p {
-  color: #1f3f73;
-  font-size: 14px;
-}
-
-.therapy-setting {
-  margin: 28px 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-#therapyTimer {
-  text-align: center;
-  font-size: 58px;
-  color: #075cff;
-  margin: 28px 0;
-}
-
 .bottom-nav {
   position: absolute;
   bottom: 0;
@@ -975,6 +937,7 @@ body {
   margin-top: 8px;
 }
 .notification-bell {
+  position: relative;
   width: 42px;
   height: 42px;
   border-radius: 50%;
@@ -1029,9 +992,6 @@ body {
 }
 /* Home live status banner */
 .status-banner {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   border-radius: 14px;
   padding: 12px 14px;
   margin: 12px 0;
@@ -1039,55 +999,38 @@ body {
   box-shadow: 0 3px 8px #eff3fa;
 }
 
+.status-header {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
 .status-banner p {
-  margin: 4px 0 0;
+  margin: 6px 0 0;
   font-size: 12px;
   line-height: 1.4;
 }
 
 .status-banner span {
-  font-size: 20px;
+  font-size: 16px;
 }
 
 .status-normal {
   background: #effaf4;
   border-color: #dff8e8;
-}
-
-.status-normal b,
-.status-normal span {
-  color: #09a94f;
-}
-
-.status-normal p {
-  color: #45607f;
+  color: #087b3a;
 }
 
 .status-warning {
   background: #fff4dc;
   border-color: #ffd084;
-}
-
-.status-warning b,
-.status-warning span {
-  color: #ff3b30;
-}
-
-.status-warning p {
   color: #8a5a00;
 }
 
 .status-comfort {
   background: #eef5ff;
   border-color: #dce8ff;
-}
-.status-comfort b,
-.status-comfort span {
   color: #075cff;
-}
-
-.status-comfort p {
-  color: #45607f;
 }
 
 .notification-item {
@@ -1099,36 +1042,4 @@ body {
   text-align: left;
   font-size: 13px;
   cursor: pointer;
-}
-.status-banner {
-  border-radius: 14px;
-  padding: 12px;
-  margin: 12px 0;
-  border: 1px solid #e2e9f2;
-}
-
-.status-header {
-  display: flex;
-  gap: 8px;
-  align-items: center;
-}
-
-.status-banner p {
-  font-size: 12px;
-  margin: 6px 0 0;
-}
-
-.status-normal {
-  background: #effaf4;
-  color: #087b3a;
-}
-
-.status-warning {
-  background: #fff4dc;
-  color: #8a5a00;
-}
-
-.status-comfort {
-  background: #eef5ff;
-  color: #075cff;
 }
