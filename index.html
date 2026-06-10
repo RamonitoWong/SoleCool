@@ -16,23 +16,19 @@
     </button>
   </div>
 </div>
-  
+
 <div id="notificationPanel" class="modal">
   <div class="modal-content">
     <h3>🔔 Notifications</h3>
-
     <div class="notification-item" onclick="showWarningModal('Heel Pressure', 'High')">
       ⚠️ High heel pressure detected
     </div>
-
     <div class="notification-item" onclick="closeNotificationPanel(); openTab('home', document.querySelectorAll('.nav-btn')[0])">
       🏃 Stretch reminder available
     </div>
-
     <div class="notification-item" onclick="closeNotificationPanel(); openTab('devices', document.querySelectorAll('.nav-btn')[3])">
       ✅ Footbeds connected
     </div>
-
     <button onclick="closeNotificationPanel()">Close</button>
   </div>
 </div>
