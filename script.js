@@ -567,6 +567,11 @@ function backToMore() {
 }
 function showNotificationPanel() {
   document.getElementById("notificationPanel").style.display = "flex";
+
+  const badge = document.querySelector(".notification-badge");
+  if (badge) {
+    badge.style.display = "none";
+  }
 }
 
 function closeNotificationPanel() {
