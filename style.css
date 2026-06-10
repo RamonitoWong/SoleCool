@@ -950,3 +950,29 @@ body {
   padding: 9px 12px;
   font-weight: 700;
 }
+.compact-move-card {
+  padding: 12px;
+}
+
+.compact-move-card .move-icon {
+  font-size: 28px;
+}
+
+.compact-move-card h2 {
+  font-size: 28px;
+  margin: 8px 0;
+}
+
+.compact-move-card p {
+  font-size: 13px;
+  margin: 8px 0;
+}
+
+.compact-move-card button {
+  padding: 10px;
+}
+
+.compact-move-card .snooze-row,
+.compact-move-card .idle-row {
+  margin-top: 8px;
+}
