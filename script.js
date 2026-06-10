@@ -5,7 +5,6 @@ let stretchInterval = null;
 let snoozeTimeout = null;
 let idleMode = false;
 let currentHistoryType = "daily";
-
 let homeSteps = 7842;
 let homeDistance = 5.6;
 let homeCalories = 412;
