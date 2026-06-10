@@ -18,17 +18,26 @@
   </div>
 </div>
   
-  <div id="notificationPanel" class="modal">
+<div id="notificationPanel" class="modal">
   <div class="modal-content">
     <h3>🔔 Notifications</h3>
-    <p>
-      ⚠️ High heel pressure detected<br><br>
-      🏃 Stretch reminder available<br><br>
+
+    <div class="notification-item" onclick="showWarningModal('Heel Pressure', 'High')">
+      ⚠️ High heel pressure detected
+    </div>
+
+    <div class="notification-item" onclick="closeNotificationPanel(); openTab('home', document.querySelectorAll('.nav-btn')[0])">
+      🏃 Stretch reminder available
+    </div>
+
+    <div class="notification-item" onclick="closeNotificationPanel(); openTab('devices', document.querySelectorAll('.nav-btn')[3])">
       ✅ Footbeds connected
-    </p>
+    </div>
+
     <button onclick="closeNotificationPanel()">Close</button>
   </div>
 </div>
+  
   <main class="app-phone">
     <div class="status">9:41 <span>▮▮▮ Wi-Fi 🔋</span></div>
     <section class="tab-page active" id="home">
