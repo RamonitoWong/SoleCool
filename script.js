@@ -373,15 +373,14 @@ function renderHistoryChart() {
       <small>${item.label}</small>
     `;
 
-    if (item.warning) {
-      bar.onclick = () => {
-        alert(
-          `${item.label} Warning\n\n` +
-          `Standing time: ${item.time}\n` +
-          "You may need more posture changes or stretch breaks."
-        );
-      };
-    }
+   if (item.warning) {
+  bar.onclick = () => {
+    showWarningModal(
+      item.label,
+      item.time
+    );
+  };
+}
 
     chart.appendChild(bar);
   });
@@ -609,4 +608,17 @@ function stopTherapyMode() {
 
   enableBtn.classList.remove("therapy-btn-hollow");
   enableBtn.classList.add("therapy-btn-active");
+}
+function showWarningModal(day, standingTime) {
+
+  document.getElementById("warningText").innerHTML =
+    `<b>${day}</b><br><br>
+     Standing Time: ${standingTime}<br><br>
+     You may need more posture changes or stretch breaks.`;
+
+  document.getElementById("warningModal").style.display = "flex";
+}
+
+function closeWarningModal() {
+  document.getElementById("warningModal").style.display = "none";
 }
