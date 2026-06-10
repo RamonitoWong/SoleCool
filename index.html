@@ -48,7 +48,7 @@
         </div>
         <div class="notification-bell" onclick="showNotificationPanel()">
           🔔
-          <span class="notification-badge">3</span>
+          <span class="notification-badge" id="notificationBadge">3</span>
         </div>      
       </header>
       <div class="healthcare-card">
@@ -57,6 +57,13 @@
           <b>Healthcare Professional</b>
           <p>Your comfort. Your patients. Our priority.</p>
         </div>
+      </div>
+      <div id="statusBanner" class="status-banner status-normal">
+        <div>
+          <b id="statusTitle">Status: Normal</b>
+          <p id="statusDescription">Foot pressure and walking pattern look stable.</p>
+        </div>
+        <span id="statusDot">●</span>
       </div>
       
       <div class="blue-card">
@@ -69,19 +76,19 @@
       <div class="activity-row">
         <div class="activity-mini-card">
           <span>👟</span>
-          <b>7,842</b>
+          <b id="homeSteps">7,842</b>
           <small>Steps</small>
         </div>
       
         <div class="activity-mini-card">
           <span>📍</span>
-          <b>5.6 km</b>
+          <b id="homeDistance">5.6 km</b>
           <small>Distance</small>
         </div>
       
         <div class="activity-mini-card">
           <span>🔥</span>
-          <b>412</b>
+          <b id="homeCalories">412</b>
           <small>Calories</small>
         </div>
       </div>
