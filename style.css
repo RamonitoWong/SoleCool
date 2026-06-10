@@ -1101,3 +1101,35 @@ body {
   font-size: 13px;
   cursor: pointer;
 }
+.status-banner {
+  border-radius: 14px;
+  padding: 12px;
+  margin: 12px 0;
+  border: 1px solid #e2e9f2;
+}
+
+.status-header {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.status-banner p {
+  font-size: 12px;
+  margin: 6px 0 0;
+}
+
+.status-normal {
+  background: #effaf4;
+  color: #087b3a;
+}
+
+.status-warning {
+  background: #fff4dc;
+  color: #8a5a00;
+}
+
+.status-comfort {
+  background: #eef5ff;
+  color: #075cff;
+}
