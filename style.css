@@ -231,3 +231,216 @@
     grid-template-columns: 1fr;
   }
 }
+.dashboard-topbar {
+  margin-bottom: 12px;
+}
+
+.notification-bell {
+  background: #eef3fb;
+  color: #075cff;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 20px;
+}
+
+.healthcare-card {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  background: #eef5ff;
+  border-radius: 18px;
+  padding: 14px;
+  margin: 12px 0;
+}
+
+.healthcare-icon {
+  background: #075cff;
+  color: white;
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  font-size: 22px;
+}
+
+.healthcare-card p {
+  margin: 4px 0 0;
+  font-size: 12px;
+  color: #45607f;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.dashboard-card {
+  background: #fff;
+  border: 1px solid #e2e9f2;
+  border-radius: 18px;
+  padding: 14px;
+  box-shadow: 0 3px 8px #eff3fa;
+  min-height: 160px;
+}
+
+.card-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: #45607f;
+  margin-bottom: 8px;
+}
+
+.standing-card h2 {
+  font-size: 30px;
+  margin: 8px 0;
+  color: #075cff;
+}
+
+.standing-card p {
+  margin: 0 0 8px;
+  font-size: 12px;
+}
+
+.standing-card small {
+  font-size: 11px;
+  color: #45607f;
+}
+
+.mini-bar {
+  height: 8px;
+  background: #dce8ff;
+  border-radius: 20px;
+  margin: 10px 0;
+}
+
+.mini-bar i {
+  display: block;
+  width: 56%;
+  height: 100%;
+  background: #075cff;
+  border-radius: 20px;
+}
+
+.mini-pressure-feet svg {
+  width: 100%;
+  height: 95px;
+}
+
+.mini-pressure-feet path {
+  fill: #f8fcff;
+  stroke: #dce5f2;
+  stroke-width: 2;
+}
+
+.mini-legend {
+  display: grid;
+  gap: 4px;
+  font-size: 11px;
+  margin-top: 6px;
+}
+
+.mini-legend span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.mini-legend i {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.gait-card-home h3 {
+  margin: 8px 0;
+  color: #09a94f;
+  font-size: 24px;
+}
+
+.gait-card-home p,
+.alert-card-home p {
+  font-size: 12px;
+  color: #45607f;
+  line-height: 1.4;
+}
+
+.gait-circle {
+  margin-top: 10px;
+  background: #eef5ff;
+  color: #075cff;
+  border-radius: 50%;
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  font-size: 24px;
+}
+
+.alert-card-home {
+  cursor: pointer;
+}
+
+.alert-box-home {
+  background: #fff3ec;
+  color: #ff3b30;
+  border-radius: 12px;
+  padding: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.section-heading {
+  font-size: 20px;
+  margin: 20px 0 10px;
+  color: #12366f;
+}
+
+.mode-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.mode-card {
+  background: #fff;
+  border: 1px solid #e2e9f2;
+  border-radius: 18px;
+  padding: 14px;
+  box-shadow: 0 3px 8px #eff3fa;
+}
+
+.mode-card p {
+  font-size: 12px;
+  color: #45607f;
+  line-height: 1.4;
+}
+
+.mode-icon {
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+
+.mode-card button {
+  width: 100%;
+  border: none;
+  border-radius: 10px;
+  padding: 9px;
+  font-weight: 700;
+  background: #075cff;
+  color: white;
+}
+
+.active-mode {
+  background: #eef5ff;
+}
+
+.dashboard-move-card {
+  margin-top: 16px;
+}
