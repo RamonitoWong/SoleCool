@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SoleCool App Interface</title>
   <link rel="stylesheet" href="style.css" />
-  
 </head>
 
 <body>
@@ -75,6 +74,14 @@
       <div class="home-alert-card" onclick="showWarningModal('Heel Pressure', 'High')">
         <b>⚠️ Comfort Alert</b>
         <p>High heel pressure detected. Consider a short stretch break or enable Comfort Mode.</p>
+      </div>
+
+      <div class="home-gait-card" onclick="openTab('insights', document.querySelectorAll('.nav-btn')[2])">
+        <div>
+          <b>👣 Gait Status</b>
+          <p>Balanced stride and stable walking pattern detected.</p>
+        </div>
+        <strong>Good</strong>
       </div>
       
       <div class="move-card">
