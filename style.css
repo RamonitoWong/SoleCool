@@ -923,3 +923,30 @@ body {
   border-radius: 20px;
   font-size: 13px;
 }
+.home-comfort-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #dce8ff;
+  border-radius: 14px;
+  background: #eef5ff;
+  padding: 14px;
+  margin: 12px 0;
+  cursor: pointer;
+}
+
+.home-comfort-card p {
+  font-size: 12px;
+  color: #45607f;
+  margin: 5px 0 0;
+  line-height: 1.4;
+}
+
+.home-comfort-card button {
+  border: none;
+  background: #075cff;
+  color: white;
+  border-radius: 10px;
+  padding: 9px 12px;
+  font-weight: 700;
+}
