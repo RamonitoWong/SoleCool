@@ -897,3 +897,29 @@ body {
   margin: 6px 0 0;
   line-height: 1.4;
 }
+.home-gait-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #dff8e8;
+  border-radius: 14px;
+  background: #effaf4;
+  padding: 14px;
+  margin: 12px 0;
+  cursor: pointer;
+}
+
+.home-gait-card p {
+  font-size: 12px;
+  color: #45607f;
+  margin: 5px 0 0;
+  line-height: 1.4;
+}
+
+.home-gait-card strong {
+  background: #dff8e8;
+  color: #09a94f;
+  padding: 8px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+}
