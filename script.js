@@ -565,3 +565,10 @@ function backToMore() {
 
   document.getElementById("moreMain").style.display = "block";
 }
+function showNotificationPanel() {
+  document.getElementById("notificationPanel").style.display = "flex";
+}
+
+function closeNotificationPanel() {
+  document.getElementById("notificationPanel").style.display = "none";
+}
