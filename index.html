@@ -6,8 +6,8 @@
   <title>SoleCool App Interface</title>
   <link rel="stylesheet" href="style.css" />
   
-</head>
-<div id="warningModal" class="modal">
+</head><body>
+  <div id="warningModal" class="modal">
   <div class="modal-content">
     <h3>⚠️ Standing Time Warning</h3>
 
@@ -18,60 +18,116 @@
     </button>
   </div>
 </div>
-<body>
+
   <main class="app-phone">
     <div class="status">9:41 <span>▮▮▮ Wi-Fi 🔋</span></div>
 
     <section class="tab-page active" id="home">
-      <header class="topbar">
+      <header class="topbar dashboard-topbar">
         <div>
           <img src="sole-cool.jpg" alt="SoleCool Logo" class="logo-img">
           <p>Smart Footbed + Compression Sock</p>
         </div>
-        <div class="avatar">HC</div>
+        <div class="notification-bell">🔔</div>
       </header>
-      
-      <div class="blue-card">
-        <p>Cumulative Standing</p>
-        <h2 id="standingTime">4h 32m</h2>
-<p>/ 8h goal <span id="goalPercent">56%</span></p>
-        <div class="bar"><i></i></div>
+
+      <div class="healthcare-card">
+        <div class="healthcare-icon">✚</div>
+        <div>
+          <b>Healthcare Professional</b>
+          <p>Your comfort. Your patients. Our priority.</p>
+        </div>
       </div>
 
-      <div class="list-card">
-        <b>👟 Steps</b>
-        <strong>7,842</strong>
+      <div class="dashboard-grid">
+        <div class="dashboard-card standing-card">
+          <div class="card-label">ⓘ Standing Time</div>
+          <h2 id="standingTime">4h 32m</h2>
+          <p>/8h Goal <span id="goalPercent">56%</span></p>
+          <div class="mini-bar"><i></i></div>
+          <small>Keep changing posture regularly.</small>
+        </div>
+
+        <div class="dashboard-card pressure-card-home">
+          <div class="card-label">✤ Pressure Distribution</div>
+
+          <div class="mini-pressure-feet">
+            <svg viewBox="0 0 180 160">
+              <path d="M55 15 C72 8 88 20 88 45 C88 78 72 92 72 122 C72 146 45 152 36 128 C25 98 38 82 35 55 C33 34 40 20 55 15Z"/>
+              <circle class="heat-blue" cx="58" cy="65" r="32"/>
+              <circle class="heat-orange" cx="58" cy="65" r="21"/>
+              <circle class="heat-red" cx="58" cy="65" r="10"/>
+              <circle class="heat-blue" cx="52" cy="123" r="25"/>
+              <circle class="heat-orange" cx="52" cy="123" r="15"/>
+
+              <path d="M125 15 C108 8 92 20 92 45 C92 78 108 92 108 122 C108 146 135 152 144 128 C155 98 142 82 145 55 C147 34 140 20 125 15Z"/>
+              <circle class="heat-blue" cx="122" cy="65" r="32"/>
+              <circle class="heat-orange" cx="122" cy="65" r="21"/>
+              <circle class="heat-red" cx="122" cy="65" r="10"/>
+              <circle class="heat-blue" cx="128" cy="123" r="25"/>
+              <circle class="heat-orange" cx="128" cy="123" r="15"/>
+            </svg>
+          </div>
+
+          <div class="mini-legend">
+            <span><i class="red"></i>Heel High</span>
+            <span><i class="green"></i>Arch Normal</span>
+          </div>
+        </div>
+
+        <div class="dashboard-card gait-card-home">
+          <div class="card-label">♿ Gait Pattern</div>
+          <h3>Balanced</h3>
+          <p>Symmetrical steps.<br>Good stability.</p>
+          <div class="gait-circle">👣</div>
+        </div>
+
+        <div class="dashboard-card alert-card-home" onclick="showWarningModal('Heel Pressure', 'High')">
+          <div class="card-label">ⓘ Comfort Alert</div>
+          <div class="alert-box-home">
+            ⚠️ High pressure detected on heel zone.
+          </div>
+          <p>Consider Comfort Mode or a short break.</p>
+        </div>
       </div>
 
-      <div class="list-card">
-        <b>📍 Distance</b>
-        <strong>5.6 km</strong>
+      <h2 class="section-heading">Comfort Mode</h2>
+
+      <div class="mode-grid">
+        <div class="mode-card active-mode">
+          <div class="mode-icon">👟</div>
+          <b>Standard Mode</b>
+          <p>Dynamic support for active shifts.</p>
+          <button>Active ✓</button>
+        </div>
+
+        <div class="mode-card">
+          <div class="mode-icon">☁️</div>
+          <b>Comfort Mode</b>
+          <p>Soft cushioning for reduced pressure.</p>
+          <button onclick="openTab('devices', document.querySelectorAll('.nav-btn')[3])">Switch Mode</button>
+        </div>
       </div>
 
-      <div class="list-card">
-        <b>🔥 Calories</b>
-        <strong>412 kcal</strong>
-      </div>
-
-      <div class="move-card">
+      <div class="move-card dashboard-move-card">
         <div class="move-icon">🏃</div>
         <b>Time to Move!</b>
-      
+
         <p id="stretchMessage">
           You’ve been standing for 2h 15m.<br>
           Let’s stretch those legs!
         </p>
-      
+
         <h2 id="stretchTimer">03:00</h2>
-      
+
         <button id="startStretchBtn" onclick="startStretchTimer()">
           Start 3-Min Stretch
         </button>
-      
+
         <button id="stopStretchBtn" class="stop-btn inactive-stop" onclick="stopStretchTimer()" disabled>
           Stop
         </button>
-      
+
         <div class="snooze-row">
           <label>Snooze:</label>
           <select id="snoozeTime">
@@ -82,9 +138,9 @@
             <option value="30">30 min</option>
           </select>
         </div>
-      
+
         <small onclick="snoozeReminder()">Snooze Reminder</small>
-      
+
         <div class="idle-row">
           <label>
             <input type="checkbox" id="idleMode" onchange="toggleIdleMode()">
@@ -92,7 +148,7 @@
           </label>
         </div>
       </div>
-      </section>
+    </section>
 
            <section class="tab-page" id="history">
   <h2 class="title">History</h2>
