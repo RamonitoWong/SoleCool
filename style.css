@@ -976,3 +976,33 @@ body {
 .compact-move-card .idle-row {
   margin-top: 8px;
 }
+.notification-bell {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: transparent;
+  color: #075cff;
+  border: 2px solid #075cff;
+  font-size: 20px;
+  cursor: pointer;
+}
+.notification-bell {
+  position: relative;
+}
+
+.notification-badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background: #ff3b30;
+  color: white;
+  font-size: 10px;
+  font-weight: 700;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+}
