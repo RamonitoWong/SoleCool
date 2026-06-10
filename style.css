@@ -788,3 +788,13 @@ body {
 #more .list-card {
   cursor: pointer;
 }
+.back-arrow {
+  background: none;
+  border: none;
+  color: #9aa4b2;
+  font-size: 32px;
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 8px;
+  line-height: 1;
+}
