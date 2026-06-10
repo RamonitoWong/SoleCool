@@ -878,3 +878,22 @@ body {
   font-size: 24px;
   color: #075cff;
 }
+.home-alert-card {
+  border: 1px solid #ffd084;
+  border-radius: 14px;
+  background: #fff4dc;
+  padding: 14px;
+  margin: 12px 0;
+  cursor: pointer;
+}
+
+.home-alert-card b {
+  color: #8a5a00;
+}
+
+.home-alert-card p {
+  font-size: 12px;
+  color: #8a5a00;
+  margin: 6px 0 0;
+  line-height: 1.4;
+}
