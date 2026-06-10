@@ -622,3 +622,20 @@ function showWarningModal(day, standingTime) {
 function closeWarningModal() {
   document.getElementById("warningModal").style.display = "none";
 }
+function openMorePage(pageId) {
+  document.getElementById("moreMain").style.display = "none";
+
+  document.querySelectorAll(".more-subpage").forEach(page => {
+    page.style.display = "none";
+  });
+
+  document.getElementById(pageId).style.display = "block";
+}
+
+function backToMore() {
+  document.querySelectorAll(".more-subpage").forEach(page => {
+    page.style.display = "none";
+  });
+
+  document.getElementById("moreMain").style.display = "block";
+}
