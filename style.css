@@ -824,3 +824,33 @@ body {
   font-size: 12px;
   color: #45607f;
 }
+.activity-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 9px;
+  margin: 14px 0;
+}
+
+.activity-mini-card {
+  background: #fff;
+  border: 1px solid #e2e9f2;
+  border-radius: 14px;
+  padding: 12px 8px;
+  text-align: center;
+  box-shadow: 0 3px 8px #eff3fa;
+}
+
+.activity-mini-card span {
+  font-size: 22px;
+}
+
+.activity-mini-card b {
+  display: block;
+  margin-top: 6px;
+  font-size: 16px;
+}
+
+.activity-mini-card small {
+  font-size: 11px;
+  color: #45607f;
+}
