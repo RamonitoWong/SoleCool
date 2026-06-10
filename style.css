@@ -231,9 +231,6 @@
     grid-template-columns: 1fr;
   }
 }
-.dashboard-topbar {
-  margin-bottom: 12px;
-}
 
 .notification-bell {
   background: #eef3fb;
