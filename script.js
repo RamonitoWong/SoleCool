@@ -479,7 +479,66 @@ let therapySeconds = 600;
 let therapyInterval = null;
 let therapyRunning = false;
 
+function closeTherapyPage() {
+  stopTherapyTimer();
+  document.getElementById("therapyPage").style.display = "none";
+  document.getElementById("devicesMain").style.display = "block";
+}
 
+function setTherapyDuration() {
+  if (therapyRunning) return;
+
+  therapySeconds = Number(document.getElementById("therapyDuration").value);
+  document.getElementById("therapyTimer").innerText = formatTime(therapySeconds);
+}
+
+function toggleTherapyTimer() {
+  const btn = document.getElementById("therapyStartPauseBtn");
+
+  if (therapyRunning) {
+    clearInterval(therapyInterval);
+    therapyRunning = false;
+    btn.innerText = "Start";
+    return;
+  }
+
+  therapyRunning = true;
+  btn.innerText = "Pause";
+
+  therapyInterval = setInterval(() => {
+    therapySeconds--;
+    document.getElementById("therapyTimer").innerText = formatTime(therapySeconds);
+
+    if (therapySeconds <= 0) {
+      clearInterval(therapyInterval);
+      therapyRunning = false;
+      document.getElementById("therapyTimer").innerText = "DONE";
+      btn.innerText = "Start";
+    }
+  }, 1000);
+}
+
+function stopTherapyTimer() {
+  clearInterval(therapyInterval);
+  therapyRunning = false;
+
+  const sessionSeconds = Number(document.getElementById("comfortSession").value);
+  therapySeconds = sessionSeconds;
+
+  document.getElementById("therapyTimer").innerText = formatTime(therapySeconds);
+  document.getElementById("therapyStartPauseBtn").innerText = "Start";
+}
+
+function resetTherapyTimer() {
+  clearInterval(therapyInterval);
+  therapySeconds = 600;
+
+  document.getElementById("therapyTimer").innerText = "10:00";
+
+  const stopBtn = document.getElementById("stopTherapyBtn");
+  stopBtn.disabled = true;
+  stopBtn.classList.add("inactive-stop");
+}
 function secondsToMinutesText(seconds) {
   return `${Math.round(seconds / 60)} min`;
 }
@@ -516,6 +575,19 @@ function updateTherapySettings() {
   }
 }
 
+function openTherapyPage() {
+  const comfortToggle = document.getElementById("comfortToggle");
+
+  if (comfortToggle && !comfortToggle.checked) {
+    alert("Comfort Mode is turned off.");
+    return;
+  }
+
+  updateTherapySettings();
+
+  document.getElementById("devicesMain").style.display = "none";
+  document.getElementById("therapyPage").style.display = "block";
+}
 function enableTherapy() {
   const enableBtn = document.getElementById("enableTherapyBtn");
   const stopBtn = document.getElementById("stopTherapyBtn");
