@@ -7,18 +7,17 @@
   <link rel="stylesheet" href="style.css" />
   
 </head>
+
+<body>
 <div id="warningModal" class="modal">
   <div class="modal-content">
     <h3>⚠️ Standing Time Warning</h3>
-
     <p id="warningText"></p>
-
     <button onclick="closeWarningModal()">
       Got It
     </button>
   </div>
 </div>
-<body>
   <main class="app-phone">
     <div class="status">9:41 <span>▮▮▮ Wi-Fi 🔋</span></div>
 
@@ -64,7 +63,15 @@
           <small>Calories</small>
         </div>
       </div>
-
+      
+      <div class="home-insight-card" onclick="openTab('insights', document.querySelectorAll('.nav-btn')[2])">
+        <div>
+          <b>🦶 Pressure Status</b>
+          <p>Heel pressure slightly high. Tap to view full pressure map.</p>
+        </div>
+        <span>›</span>
+      </div>
+      
       <div class="move-card">
         <div class="move-icon">🏃</div>
         <b>Time to Move!</b>
