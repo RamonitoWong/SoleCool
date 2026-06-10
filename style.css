@@ -988,9 +988,6 @@ body {
   font-size: 20px;
   cursor: pointer;
 }
-.notification-bell {
-  position: relative;
-}
 
 .notification-badge {
   position: absolute;
