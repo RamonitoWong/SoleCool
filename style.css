@@ -1038,3 +1038,77 @@ body {
   font-size: 13px;
   font-weight: 700;
 }
+/* Home live status banner */
+.status-banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 14px;
+  padding: 12px 14px;
+  margin: 12px 0;
+  border: 1px solid #e2e9f2;
+  box-shadow: 0 3px 8px #eff3fa;
+}
+
+.status-banner p {
+  margin: 4px 0 0;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.status-banner span {
+  font-size: 20px;
+}
+
+.status-normal {
+  background: #effaf4;
+  border-color: #dff8e8;
+}
+
+.status-normal b,
+.status-normal span {
+  color: #09a94f;
+}
+
+.status-normal p {
+  color: #45607f;
+}
+
+.status-warning {
+  background: #fff4dc;
+  border-color: #ffd084;
+}
+
+.status-warning b,
+.status-warning span {
+  color: #ff3b30;
+}
+
+.status-warning p {
+  color: #8a5a00;
+}
+
+.status-comfort {
+  background: #eef5ff;
+  border-color: #dce8ff;
+}
+
+.status-comfort b,
+.status-comfort span {
+  color: #075cff;
+}
+
+.status-comfort p {
+  color: #45607f;
+}
+
+.notification-item {
+  background: #f8fbff;
+  border: 1px solid #e2e9f2;
+  border-radius: 12px;
+  padding: 11px;
+  margin: 8px 0;
+  text-align: left;
+  font-size: 13px;
+  cursor: pointer;
+}
