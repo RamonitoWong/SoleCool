@@ -361,37 +361,83 @@
       </div>
     </section>
 <section class="tab-page" id="more">
-  <h2 class="title">More</h2>
+  <div id="moreMain">
+    <h2 class="title">More</h2>
 
-  <div class="list-card">
-    <b>👤 Profile</b>
-    <small>Health profile and user preferences</small>
-    <span>›</span>
+    <div class="list-card" onclick="openMorePage('profilePage')">
+      <b>👤 Profile</b>
+      <small>Health profile and user preferences</small>
+      <span>›</span>
+    </div>
+
+    <div class="list-card" onclick="openMorePage('exercisePage')">
+      <b>🏃 Exercise Recommendations</b>
+      <small>Suggested stretches and mobility breaks</small>
+      <span>›</span>
+    </div>
+
+    <div class="list-card" onclick="openMorePage('safetyPage')">
+      <b>🛡 Safety Settings</b>
+      <small>Overheat protection, idle mode, and alerts</small>
+      <span>›</span>
+    </div>
+
+    <div class="list-card" onclick="openMorePage('notificationPage')">
+      <b>🔔 Notification Settings</b>
+      <small>Manage haptic reminders and app alerts</small>
+      <span>›</span>
+    </div>
+
+    <div class="list-card" onclick="openMorePage('supportPage')">
+      <b>❔ Help & Support</b>
+      <small>FAQs, troubleshooting, and contact support</small>
+      <span>›</span>
+    </div>
   </div>
 
-  <div class="list-card">
-    <b>🏃 Exercise Recommendations</b>
-    <small>Suggested stretches and mobility breaks</small>
-    <span>›</span>
+  <div id="profilePage" class="more-subpage">
+    <button class="back-therapy" onclick="backToMore()">‹ Back</button>
+    <h2 class="title">Profile</h2>
+    <div class="setting">
+      <b>User Profile</b>
+      <p>Name: Health Care Worker<br>Goal: Reduce foot fatigue during long shifts.</p>
+    </div>
   </div>
 
-  <div class="list-card">
-    <b>🛡 Safety Settings</b>
-    <small>Overheat protection, idle mode, and alerts</small>
-    <span>›</span>
+  <div id="exercisePage" class="more-subpage">
+    <button class="back-therapy" onclick="backToMore()">‹ Back</button>
+    <h2 class="title">Exercise Recommendations</h2>
+    <div class="setting">
+      <b>Recommended Breaks</b>
+      <p>Calf raises, ankle circles, toe stretches, and short walking breaks every 60 minutes.</p>
+    </div>
   </div>
 
-  <div class="list-card">
-    <b>🔔 Notification Settings</b>
-    <small>Manage haptic reminders and app alerts</small>
-    <span>›</span>
+  <div id="safetyPage" class="more-subpage">
+    <button class="back-therapy" onclick="backToMore()">‹ Back</button>
+    <h2 class="title">Safety Settings</h2>
+    <div class="setting">
+      <b>Safety Alerts</b>
+      <p>Enable warnings for prolonged standing, high heel pressure, and uneven pressure distribution.</p>
+    </div>
   </div>
 
-  <div class="list-card">
-    <b>❔ Help & Support</b>
-    <small>FAQs, troubleshooting, and contact support</small>
-    <span>›</span>
+  <div id="notificationPage" class="more-subpage">
+    <button class="back-therapy" onclick="backToMore()">‹ Back</button>
+    <h2 class="title">Notification Settings</h2>
+    <div class="setting">
+      <b>Reminder Settings</b>
+      <p>Manage vibration reminders, stretch alerts, and comfort mode notifications.</p>
+    </div>
   </div>
+
+  <div id="supportPage" class="more-subpage">
+    <button class="back-therapy" onclick="backToMore()">‹ Back</button>
+    <h2 class="title">Help & Support</h2>
+    <div class="setting">
+      <b>Support</b>
+      <p>Check device connection, battery status, and contact support if the footbeds are not responding.</p>
+    </div>
 
   <div class="tip">
     💡 <b>Prototype Note</b><br>
