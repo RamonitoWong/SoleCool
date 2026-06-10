@@ -6,6 +6,12 @@ let snoozeTimeout = null;
 let idleMode = false;
 let currentHistoryType = "daily";
 
+let homeSteps = 7842;
+let homeDistance = 5.6;
+let homeCalories = 412;
+let notificationCount = 3;
+let currentStatusMode = "normal";
+
 function openTab(tabId, button) {
   document.querySelectorAll(".tab-page").forEach(page => {
     page.classList.remove("active");
@@ -447,6 +453,8 @@ document.addEventListener("DOMContentLoaded", () => {
   if (typeof updateTherapySettings === "function") {
     updateTherapySettings();
   }
+
+  startHomeDemoUpdates();
 });
 
 let footbeds = {
@@ -565,15 +573,102 @@ function backToMore() {
 
   document.getElementById("moreMain").style.display = "block";
 }
-function showNotificationPanel() {
-  document.getElementById("notificationPanel").style.display = "flex";
 
-  const badge = document.querySelector(".notification-badge");
-  if (badge) {
+function updateNotificationBadge() {
+  const badge = document.getElementById("notificationBadge");
+
+  if (!badge) return;
+
+  if (notificationCount > 0) {
+    badge.innerText = notificationCount;
+    badge.style.display = "grid";
+  } else {
     badge.style.display = "none";
   }
 }
 
+function addNotification() {
+  notificationCount++;
+  updateNotificationBadge();
+}
+
+function showNotificationPanel() {
+  const panel = document.getElementById("notificationPanel");
+
+  if (panel) {
+    panel.style.display = "flex";
+  }
+
+  notificationCount = 0;
+  updateNotificationBadge();
+}
+
 function closeNotificationPanel() {
-  document.getElementById("notificationPanel").style.display = "none";
+  const panel = document.getElementById("notificationPanel");
+
+  if (panel) {
+    panel.style.display = "none";
+  }
+}
+
+function updateHomeStats() {
+  homeSteps += Math.floor(Math.random() * 9) + 4;
+  homeDistance = homeSteps * 0.000714;
+  homeCalories = Math.round(homeSteps * 0.0525);
+
+  const stepsEl = document.getElementById("homeSteps");
+  const distanceEl = document.getElementById("homeDistance");
+  const caloriesEl = document.getElementById("homeCalories");
+
+  if (stepsEl) stepsEl.innerText = homeSteps.toLocaleString();
+  if (distanceEl) distanceEl.innerText = `${homeDistance.toFixed(1)} km`;
+  if (caloriesEl) caloriesEl.innerText = homeCalories;
+}
+
+function setHomeStatus(mode) {
+  const banner = document.getElementById("statusBanner");
+  const title = document.getElementById("statusTitle");
+  const description = document.getElementById("statusDescription");
+  const dot = document.getElementById("statusDot");
+
+  if (!banner || !title || !description || !dot) return;
+
+  banner.classList.remove("status-normal", "status-warning", "status-comfort");
+
+  if (mode === "warning") {
+    banner.classList.add("status-warning");
+    title.innerText = "Status: Warning";
+    description.innerText = "High heel pressure detected. Consider a short break.";
+    dot.innerText = "●";
+
+    if (currentStatusMode !== "warning") {
+      addNotification();
+    }
+  } else if (mode === "comfort") {
+    banner.classList.add("status-comfort");
+    title.innerText = "Status: Comfort Mode Active";
+    description.innerText = "Support settings are active for long standing shifts.";
+    dot.innerText = "●";
+  } else {
+    banner.classList.add("status-normal");
+    title.innerText = "Status: Normal";
+    description.innerText = "Foot pressure and walking pattern look stable.";
+    dot.innerText = "●";
+  }
+
+  currentStatusMode = mode;
+}
+
+function cycleHomeStatus() {
+  const modes = ["normal", "warning", "comfort", "normal"];
+  const nextIndex = Math.floor(Math.random() * modes.length);
+  setHomeStatus(modes[nextIndex]);
+}
+
+function startHomeDemoUpdates() {
+  updateNotificationBadge();
+  setHomeStatus("normal");
+
+  setInterval(updateHomeStats, 3000);
+  setInterval(cycleHomeStatus, 9000);
 }
