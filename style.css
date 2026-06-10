@@ -781,3 +781,10 @@ body {
   border-radius: 10px;
   font-weight: 600;
 }
+.more-subpage {
+  display: none;
+}
+
+#more .list-card {
+  cursor: pointer;
+}
