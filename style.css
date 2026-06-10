@@ -854,3 +854,27 @@ body {
   font-size: 11px;
   color: #45607f;
 }
+.home-insight-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #e2e9f2;
+  border-radius: 14px;
+  background: #fff;
+  padding: 14px;
+  margin: 12px 0;
+  box-shadow: 0 3px 8px #eff3fa;
+  cursor: pointer;
+}
+
+.home-insight-card p {
+  font-size: 12px;
+  color: #45607f;
+  margin: 5px 0 0;
+  line-height: 1.4;
+}
+
+.home-insight-card span {
+  font-size: 24px;
+  color: #075cff;
+}
