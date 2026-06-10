@@ -1002,3 +1002,13 @@ body {
   display: grid;
   place-items: center;
 }
+.notification-item {
+  background: #f8fbff;
+  border: 1px solid #e2e9f2;
+  border-radius: 12px;
+  padding: 11px;
+  margin: 8px 0;
+  text-align: left;
+  font-size: 13px;
+  cursor: pointer;
+}
