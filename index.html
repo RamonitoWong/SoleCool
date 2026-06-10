@@ -20,7 +20,7 @@
 <div id="notificationPanel" class="modal">
   <div class="modal-content">
     <h3>🔔 Notifications</h3>
-    <div class="notification-item" onclick="showWarningModal('Heel Pressure', 'High')">
+    <div class="notification-item" onclick="closeNotificationPanel(); showWarningModal('Heel Pressure', 'High')">
       ⚠️ High heel pressure detected
     </div>
     <div class="notification-item" onclick="closeNotificationPanel(); openTab('home', document.querySelectorAll('.nav-btn')[0])">
